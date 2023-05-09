@@ -22,7 +22,8 @@ enum class AppRouter(
     Signup("/auth/signup"),
     ContactList("/contacts/list"),
     ContactAdd("/contacts/add"),
-    ContactDetail("/contacts/detail/{uid}");
+    ContactDetail("/contacts/detail/{uid}"),
+    ShowKvision("/showKvision");
 
     override val matcher: RouteMatcher = RouteMatcher.create(routeFormat)
 }

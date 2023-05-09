@@ -28,5 +28,13 @@ class LandingPageEventHandler(
             )
             Unit
         }
+        is LandingPageContract.Events.NavigateToShowKvisionPage -> {
+            routerViewModel.trySend(
+                RouterContract.Inputs.GoToDestination(
+                    AppRouter.ShowKvision.directions().build()
+                )
+            )
+            Unit
+        }
     }
 }

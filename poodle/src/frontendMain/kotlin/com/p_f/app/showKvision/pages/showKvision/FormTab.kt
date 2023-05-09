@@ -1,6 +1,6 @@
 @file:UseContextualSerialization(Date::class)
 
-package com.p_f
+package com.p_f.app.showKvision.pages.showKvision
 
 import io.kvision.core.AlignItems
 import io.kvision.core.FlexWrap
@@ -80,11 +80,13 @@ class FormTab : SimplePanel() {
                 validatorMessage = { tr("Only numbers are allowed") }) {
                 it.getValue()?.let { "^\\d+$".toRegex().matches(it) }
             }
-            add(Form::password, Password(label = tr("Password field with minimum length validator"), floating = true),
+            add(
+                Form::password, Password(label = tr("Password field with minimum length validator"), floating = true),
                 validatorMessage = { tr("Password too short") }) {
                 (it.getValue()?.length ?: 0) >= 8
             }
-            add(Form::password2, Password(label = tr("Password confirmation"), floating = true),
+            add(
+                Form::password2, Password(label = tr("Password confirmation"), floating = true),
                 validatorMessage = { tr("Password too short") }) {
                 (it.getValue()?.length ?: 0) >= 8
             }

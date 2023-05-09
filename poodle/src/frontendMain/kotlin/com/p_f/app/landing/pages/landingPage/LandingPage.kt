@@ -27,7 +27,7 @@ fun Container.landingPage() : KoinComponent = object : KoinComponent {
                     }
                     button("showCase List") {
                         onClick {
-                            vm.trySend(com.p_f.app.landing.pages.landingPage.LandingPageContract.Inputs.NavigateToContactListPage)
+                            vm.trySend(LandingPageContract.Inputs.NavigateToShowKvisionPage)
                         }
                     }
                 }

@@ -8,9 +8,12 @@ object LandingPageContract {
     sealed class Inputs {
         object Initialize : Inputs()
         object NavigateToContactListPage : Inputs()
+        object NavigateToShowKvisionPage : Inputs()
     }
 
     sealed class Events {
         object NavigateToContactListPage : Events()
+        object NavigateToShowKvisionPage : Events()
     }
+
 }

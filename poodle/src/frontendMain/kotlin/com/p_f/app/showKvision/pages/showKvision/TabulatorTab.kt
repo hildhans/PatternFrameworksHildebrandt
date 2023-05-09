@@ -1,6 +1,6 @@
 @file:UseContextualSerialization(Date::class)
 
-package com.p_f
+package com.p_f.app.showKvision.pages.showKvision
 
 import io.kvision.core.onEvent
 import io.kvision.form.InputSize

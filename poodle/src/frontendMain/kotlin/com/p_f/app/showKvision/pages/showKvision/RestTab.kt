@@ -1,4 +1,4 @@
-package com.p_f
+package com.p_f.app.showKvision.pages.showKvision
 
 import io.kvision.core.onClickLaunch
 import io.kvision.form.text.textInput
@@ -16,7 +16,6 @@ import io.kvision.rest.call
 import io.kvision.utils.perc
 import io.kvision.utils.px
 import kotlinx.coroutines.asDeferred
-import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -50,13 +49,13 @@ class RestTab : SimplePanel() {
                     }
                 }
             }
-/*            div = div {
+            div = div {
                 fontSize = 20.px
                 templates = mapOf(
                     "en" to require("hbs/rest.en.hbs"),
                     "pl" to require("hbs/rest.pl.hbs")
                 )
-            }*/
+            }
         }
     }
 }

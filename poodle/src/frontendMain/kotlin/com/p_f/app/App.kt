@@ -11,6 +11,7 @@ import com.p_f.api.endpointModule
 import com.p_f.app.auth.pages.authModule
 import com.p_f.app.contacts.pages.contactModule
 import com.p_f.app.landing.pages.landingPage.landingPageModule
+import com.p_f.app.showKvision.pages.showPage.showKvisionPageModule
 import com.p_f.app.layout.appLayoutModule
 import com.p_f.app.layout.shared.sharedComponentsModule
 import com.p_f.repository.repositoryModule
@@ -42,7 +43,8 @@ fun initializeKoin() {
             appLayoutModule,
             landingPageModule,
             authModule,
-            contactModule
+            contactModule,
+            showKvisionPageModule
         )
     }
 

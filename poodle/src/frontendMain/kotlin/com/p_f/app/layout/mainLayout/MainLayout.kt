@@ -45,6 +45,14 @@ fun Container.mainLayout(headerTitle: String, content: Container.() -> Unit) : K
                                     }
                                 }
                                 li(className = "nav-item") {
+                                    link("Showroom", className = "nav-link", icon = "bi bi-file-earmark") {
+                                        url = "#${AppRouter.ShowKvision.directions().build()}"
+                                        if (currentRouteUrl.startsWith("/showKvision")) {
+                                            addCssClass("active")
+                                        }
+                                    }
+                                }
+                                li(className = "nav-item") {
                                     link("Tasks", className = "nav-link", icon = "bi bi-list-task") {
                                         url = "#"
                                     }

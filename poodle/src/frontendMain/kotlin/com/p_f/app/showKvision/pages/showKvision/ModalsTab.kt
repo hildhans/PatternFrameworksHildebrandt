@@ -1,4 +1,4 @@
-package com.p_f
+package com.p_f.app.showKvision.pages.showKvision
 
 import io.kvision.core.BsColor
 import io.kvision.core.onEvent

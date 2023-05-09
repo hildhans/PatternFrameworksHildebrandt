@@ -10,6 +10,7 @@ import com.p_f.app.contacts.pages.contactDetail.contactDetailPage
 import com.p_f.app.contacts.pages.contactList.contactListPage
 import com.p_f.app.initializeKoin
 import com.p_f.app.landing.pages.landingPage.landingPage
+import com.p_f.app.showKvision.pages.showPage.ShowKvisionPage
 import com.p_f.app.layout.shared.appHeader.appHeader
 import com.p_f.repository.auth.AuthRepository
 import io.kvision.Application
@@ -79,6 +80,9 @@ class App : Application(), KoinComponent {
                             AppRouter.ContactDetail -> {
                                 val contactUid by stringPath("uid")
                                 contactDetailPage(contactUid)
+                            }
+                            AppRouter.ShowKvision -> {
+                                ShowKvisionPage()
                             }
                         }
                     },

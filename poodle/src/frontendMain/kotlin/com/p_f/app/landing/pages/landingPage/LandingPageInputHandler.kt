@@ -23,5 +23,9 @@ class LandingPageInputHandler : InputHandler<
         is LandingPageContract.Inputs.NavigateToContactListPage -> {
             postEvent(LandingPageContract.Events.NavigateToContactListPage)
         }
+
+        is LandingPageContract.Inputs.NavigateToShowKvisionPage -> {
+            postEvent(LandingPageContract.Events.NavigateToShowKvisionPage)
+        }
     }
 }
