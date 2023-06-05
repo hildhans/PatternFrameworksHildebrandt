@@ -10,7 +10,7 @@ plugins {
 }
 
 version = "1.0.0-SNAPSHOT"
-group = "com.p_f"
+group = "com.example"
 
 repositories {
     mavenCentral()
@@ -21,16 +21,14 @@ repositories {
 val kotlinVersion: String by System.getProperties()
 val kvisionVersion: String by System.getProperties()
 val ktorVersion: String by project
-val logbackVersion: String by project
 val exposedVersion: String by project
-val kotlinxDatetimeVersion: String by project
+val hikariVersion: String by project
 val h2Version: String by project
-val arrowVersion: String by project
-val koinKtorVersion: String by project
-val koinVersion: String by project
-val mysqlVersion: String by project
-val serializationVersion: String by project
-val favreBcryptVersion: String by project
+val pgsqlVersion: String by project
+val kweryVersion: String by project
+val logbackVersion: String by project
+val commonsCodecVersion: String by project
+val jdbcNamedParametersVersion: String by project
 
 val webDir = file("src/frontendMain/web")
 val mainClassName = "io.ktor.server.netty.EngineMain"
@@ -49,20 +47,23 @@ kotlin {
     }
     js("frontend") {
         browser {
-            commonWebpackConfig {
-                outputFileName = "main.bundle.js"
-            }
             runTask {
+                outputFileName = "main.bundle.js"
                 sourceMaps = false
                 devServer = KotlinWebpackConfig.DevServer(
                     open = false,
                     port = 3000,
                     proxy = mutableMapOf(
                         "/kv/*" to "http://localhost:8080",
+                        "/login" to "http://localhost:8080",
+                        "/logout" to "http://localhost:8080",
                         "/kvws/*" to mapOf("target" to "ws://localhost:8080", "ws" to true)
                     ),
                     static = mutableListOf("$buildDir/processedResources/frontend/main")
                 )
+            }
+            webpackTask {
+                outputFileName = "main.bundle.js"
             }
             testTask {
                 useKarma {
@@ -76,26 +77,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api("io.kvision:kvision-server-ktor-koin:$kvisionVersion")
-
-                // Kotlinx Datetime
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetimeVersion")
-
-                // Kotlinx Serialization
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-
-                // Arrow
-                implementation("io.arrow-kt:arrow-core:$arrowVersion")
-
-                // Ktor
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                implementation("io.ktor:ktor-client-auth:$ktorVersion")
-
-                // Koin
-                implementation("io.insert-koin:koin-core:$koinVersion")
-
-
             }
+            kotlin.srcDir("build/generated-src/common")
         }
         val commonTest by getting {
             dependencies {
@@ -108,31 +91,18 @@ kotlin {
                 implementation(kotlin("reflect"))
                 implementation("io.ktor:ktor-server-netty:$ktorVersion")
                 implementation("io.ktor:ktor-server-auth:$ktorVersion")
-                implementation("io.ktor:ktor-server-auth-jwt:$ktorVersion")
                 implementation("io.ktor:ktor-server-compression:$ktorVersion")
-                implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
-                implementation("io.ktor:ktor-server-cors:$ktorVersion")
+                implementation("io.ktor:ktor-server-default-headers:$ktorVersion")
+                implementation("io.ktor:ktor-server-compression:$ktorVersion")
+                implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
-
-                // Exposed
-                implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
-                implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
-                implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
-                implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
-
-                // H2
                 implementation("com.h2database:h2:$h2Version")
-
-                // MySQL
-                implementation("com.mysql:mysql-connector-j:$mysqlVersion")
-
-                // Koin for Ktor
-                implementation("io.insert-koin:koin-ktor:$koinKtorVersion")
-                // SLF4J Logger for Koin
-                implementation("io.insert-koin:koin-logger-slf4j:$koinKtorVersion")
-
-                // Bcrypt
-                implementation("at.favre.lib:bcrypt:$favreBcryptVersion")
+                implementation("org.jetbrains.exposed:exposed:$exposedVersion")
+                implementation("org.postgresql:postgresql:$pgsqlVersion")
+                implementation("com.zaxxer:HikariCP:$hikariVersion")
+                implementation("commons-codec:commons-codec:$commonsCodecVersion")
+                implementation("com.axiomalaska:jdbc-named-parameters:$jdbcNamedParametersVersion")
+                implementation("com.github.andrewoma.kwery:core:$kweryVersion")
             }
         }
         val backendTest by getting {
@@ -146,34 +116,11 @@ kotlin {
             dependencies {
                 implementation("io.kvision:kvision:$kvisionVersion")
                 implementation("io.kvision:kvision-bootstrap:$kvisionVersion")
-                implementation("io.kvision:kvision-bootstrap-upload:$kvisionVersion")
-                implementation("io.kvision:kvision-datetime:$kvisionVersion")
-                implementation("io.kvision:kvision-richtext:$kvisionVersion")
-                implementation("io.kvision:kvision-tom-select:$kvisionVersion")
-                implementation("io.kvision:kvision-imask:$kvisionVersion")
-                implementation("io.kvision:kvision-toastify:$kvisionVersion")
-                implementation("io.kvision:kvision-fontawesome:$kvisionVersion")
-                implementation("io.kvision:kvision-bootstrap-icons:$kvisionVersion")
-                implementation("io.kvision:kvision-pace:$kvisionVersion")
-                implementation("io.kvision:kvision-print:$kvisionVersion")
-                implementation("io.kvision:kvision-tabulator:$kvisionVersion")
-                implementation("io.kvision:kvision-routing-ballast:$kvisionVersion")
                 implementation("io.kvision:kvision-state:$kvisionVersion")
-                implementation("io.kvision:kvision-ballast:$kvisionVersion")
+                implementation("io.kvision:kvision-fontawesome:$kvisionVersion")
                 implementation("io.kvision:kvision-i18n:$kvisionVersion")
-                implementation("io.kvision:kvision-handlebars:$kvisionVersion")
-                implementation("io.kvision:kvision-chart:$kvisionVersion")
-                implementation("io.kvision:kvision-react:$kvisionVersion")
-                implementation("io.kvision:kvision-routing-navigo:$kvisionVersion")
-                implementation("io.kvision:kvision-rest:$kvisionVersion")
-                implementation(npm("react-awesome-button", "6.5.1"))
-                implementation(npm("prop-types", "*"))
-
-                // Ktor
-                implementation("io.ktor:ktor-client-js:$ktorVersion")
-                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-
             }
+            kotlin.srcDir("build/generated-src/frontend")
         }
         val frontendTest by getting {
             dependencies {
@@ -191,7 +138,7 @@ afterEvaluate {
             group = "package"
             archiveAppendix.set("frontend")
             val distribution =
-                project.tasks.getByName("frontendBrowserProductionWebpack", KotlinWebpack::class).destinationDirectory
+                project.tasks.getByName("frontendBrowserProductionWebpack", KotlinWebpack::class).destinationDirectory!!
             from(distribution) {
                 include("*.*")
             }
