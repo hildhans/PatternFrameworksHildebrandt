@@ -19,9 +19,9 @@ object Db {
     fun init(config: ApplicationConfig) {
         Database.connect(hikari(config))
         transaction {
-            create(UserDao)
-            create(TestDao)
-            create(UserTestDao)
+            create(UserDbo)
+            create(TestDbo)
+            create(UserTestDbo)
         }
     }
 

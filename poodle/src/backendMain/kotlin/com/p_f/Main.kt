@@ -26,7 +26,7 @@ fun Application.main() {
     install(DefaultHeaders)
     install(CallLogging)
     install(Sessions) {
-        cookie<Profile>("KTSESSION", storage = SessionStorageMemory()) {
+        cookie<User>("KTSESSION", storage = SessionStorageMemory()) {
             cookie.path = "/"
             cookie.extensions["SameSite"] = "strict"
         }
@@ -39,8 +39,8 @@ fun Application.main() {
             passwordParamName = "password"
             validate { credentials ->
                 dbQuery {
-                    UserDao.select {
-                        (UserDao.username eq credentials.name) and (UserDao.password eq DigestUtils.sha256Hex(
+                    UserDbo.select {
+                        (UserDbo.username eq credentials.name) and (UserDbo.password eq DigestUtils.sha256Hex(
                             credentials.password
                         ))
                     }.firstOrNull()?.let {
@@ -48,20 +48,20 @@ fun Application.main() {
                     }
                 }
             }
-            skipWhen { call -> call.sessions.get<Profile>() != null }
+            skipWhen { call -> call.sessions.get<User>() != null }
         }
     }
 
     routing {
-        applyRoutes(getServiceManager<IRegisterProfileService>())
+        applyRoutes(getServiceManager<IRegisterUserService>())
         authenticate {
             post("login") {
                 val principal = call.principal<UserIdPrincipal>()
                 val result = if (principal != null) {
                     dbQuery {
-                        UserDao.select { UserDao.username eq principal.name }.firstOrNull()?.let {
+                        UserDbo.select { UserDbo.username eq principal.name }.firstOrNull()?.let {
                             val profile =
-                                Profile(it[UserDao.id], it[UserDao.name], it[UserDao.username].toString(), null, null)
+                                User(it[UserDbo.id], it[UserDbo.name], it[UserDbo.username].toString(), null, null)
                             call.sessions.set(profile)
                             HttpStatusCode.OK
                         } ?: HttpStatusCode.Unauthorized
@@ -72,16 +72,16 @@ fun Application.main() {
                 call.respond(result)
             }
             get("logout") {
-                call.sessions.clear<Profile>()
+                call.sessions.clear<User>()
                 call.respondRedirect("/")
             }
-            applyRoutes(getServiceManager<IProfileService>())
+            applyRoutes(getServiceManager<IUserService>())
         }
     }
     val module = module {
+        factoryOf(::UserAddressService)
         factoryOf(::UserService)
-        factoryOf(::ProfileService)
-        singleOf(::RegisterProfileService)
+        singleOf(::RegisterUserService)
     }
     kvisionInit(module)
 }

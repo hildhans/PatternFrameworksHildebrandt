@@ -3,12 +3,15 @@ package com.p_f
 import io.kvision.*
 import io.kvision.i18n.DefaultI18nManager
 import io.kvision.i18n.I18n
+import io.kvision.panel.Direction
 import io.kvision.panel.root
+import io.kvision.panel.splitPanel
 import io.kvision.utils.perc
 import io.kvision.utils.vh
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
+import kotlinx.coroutines.launch
 
 val AppScope = CoroutineScope(window.asCoroutineDispatcher())
 
@@ -26,9 +29,17 @@ class App : Application() {
                 )
             )
         root("poodle") {
+            //https://kvision.gitbook.io/kvision-guide/v/kvision-1.x/part-1-fundamentals/layout-containers
+            //splitPanel(direction = Direction.HORIZONTAL) {
+            splitPanel {
                 width = 100.perc
                 height = 100.vh
                 add(PoodlePanel)
+                add(MainPoodlePanel)
+            }
+        }
+        AppScope.launch {
+            Model.getUserAddressList()
         }
     }
 }

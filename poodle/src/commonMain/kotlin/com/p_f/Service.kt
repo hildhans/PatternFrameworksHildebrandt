@@ -1,21 +1,28 @@
 package com.p_f
 
 import io.kvision.annotations.KVService
+import kotlinx.serialization.Serializable
+
+@Serializable
+enum class Sort {
+    FN, LN, E, F
+}
+
+@KVService
+interface IUserAddressService {
+    suspend fun getUserAddressList(search: String?, types: String, sort: Sort): List<Address>
+    suspend fun addUserAddress(address: Address): Address
+    suspend fun updateUserAddress(address: Address): Address
+    suspend fun deleteUserAddress(id: Int): Boolean
+    //suspend fun getUserAddress(id: Int): Address
+}
 
 @KVService
 interface IUserService {
-
-    //suspend fun updateUser(user: User): Address
-    suspend fun getUser(): Profile
-    suspend fun deleteUser(id: Int): Boolean
+    suspend fun getUser(): User
 }
 
 @KVService
-interface IProfileService {
-    suspend fun getProfile(): Profile
-}
-
-@KVService
-interface IRegisterProfileService {
-    suspend fun registerProfile(profile: Profile, password: String): Boolean
+interface IRegisterUserService {
+    suspend fun registerUser(user: User, password: String): Boolean
 }
