@@ -31,12 +31,12 @@ class App : Application() {
         root("poodle") {
             //https://kvision.gitbook.io/kvision-guide/v/kvision-1.x/part-1-fundamentals/layout-containers
             //splitPanel(direction = Direction.HORIZONTAL) {
-            splitPanel {
+            //splitPanel {
                 width = 100.perc
                 height = 100.vh
                 add(PoodlePanel)
-                add(MainPoodlePanel)
-            }
+                //add(MainPoodlePanel)
+            //}
         }
         AppScope.launch {
             Model.getUserAddressList()

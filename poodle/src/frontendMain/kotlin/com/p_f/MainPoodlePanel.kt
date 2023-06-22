@@ -16,7 +16,7 @@ import io.kvision.utils.px
 import kotlinx.coroutines.launch
 
 object MainPoodlePanel : StackPanel() {
-
+/*
     private var editingId: Int? = null
 
     private val formPanel: FormPanel<Address>
@@ -44,7 +44,7 @@ object MainPoodlePanel : StackPanel() {
                     this@MainPoodlePanel.save()
                 }
                 button(I18n.tr("Cancel"), "fas fa-times", ButtonStyle.SECONDARY).onClick {
-                    this@MainPoodlePanel.close()
+//                    this@MainPoodlePanel.close()
                 }
             })
             onEvent {
@@ -55,7 +55,7 @@ object MainPoodlePanel : StackPanel() {
                 }
             }
         }
-        add(ActionPanel)
+        //add(ActionPanel)
     }
 
     fun add() {
@@ -78,14 +78,14 @@ object MainPoodlePanel : StackPanel() {
                 } else {
                     Model.addUserAddress(address)
                 }
-                close()
+                //close()
             }
         }
     }
 
     fun delete(index: Int) {
         AppScope.launch {
-            close()
+            //close()
             Model.deleteUserAddress(index)
         }
     }
@@ -100,5 +100,5 @@ object MainPoodlePanel : StackPanel() {
     private fun close() {
         editingId = null
         activeChild = ActionPanel
-    }
+    }*/
 }

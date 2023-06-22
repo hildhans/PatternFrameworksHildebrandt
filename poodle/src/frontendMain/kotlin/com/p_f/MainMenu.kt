@@ -1,8 +1,10 @@
 package com.p_f
 
+import com.p_f.Model.user
 import io.kvision.core.*
 import io.kvision.html.*
 import io.kvision.panel.hPanel
+import io.kvision.state.bind
 import io.kvision.utils.auto
 import io.kvision.utils.px
 
@@ -27,9 +29,6 @@ fun Container.LogoDiv(value: String, size: Int): Tag {
         }
     }
 }
-
-
-
 
 fun Container.LektionShowDiv(value: String, size: Int): Tag {
     return div(value).apply {
@@ -60,15 +59,12 @@ fun Container.BegruessungsDiv(value: String, size: Int): Tag {
             fontStyle = FontStyle.OBLIQUE
             fontWeight = FontWeight.BOLDER
             fontVariant = FontVariant.SMALLCAPS
-            +io.kvision.i18n.tr("Hello Alice")
-
+            +io.kvision.i18n.tr("Hello")
         }
 
         div(rich = true) {
             +io.kvision.i18n.tr("<span style=\"font-family: Verdana; font-size: 14pt\">Du machst das großartig. Weiter so!</span>")
         }
-
-
     }
 }
 
