@@ -23,7 +23,6 @@ fun Container.aufgabenPool(value: String): Tag {
             I18n.tr("to drink")
         )
 
-
         hPanel(
             justify = io.kvision.core.JustifyContent.CENTER,
             alignItems = AlignItems.FLEXSTART,
@@ -68,7 +67,6 @@ fun Container.aufgabenPool(value: String): Tag {
                     setDragDropData("text/xml", it)
                 }
             }
-
         }
 
         val wordTschuess = observableListOf(
@@ -78,7 +76,6 @@ fun Container.aufgabenPool(value: String): Tag {
         val wordBye = observableListOf(
             I18n.tr("bye")
         )
-
 
         hPanel(
             justify = io.kvision.core.JustifyContent.CENTER,
@@ -127,7 +124,6 @@ fun Container.aufgabenPool(value: String): Tag {
 
         }
 
-
         val wordDanke = observableListOf(
             I18n.tr("Danke")
         )
@@ -135,7 +131,6 @@ fun Container.aufgabenPool(value: String): Tag {
         val wordThanks = observableListOf(
             I18n.tr("Thanks")
         )
-
 
         hPanel(
             justify = io.kvision.core.JustifyContent.CENTER,
@@ -161,7 +156,6 @@ fun Container.aufgabenPool(value: String): Tag {
                     setDragDropData("text/plain", it)
                 }
             }
-
             vPanel(spacing = 10) {
                 marginTop = 14.px
                 width = 200.px
@@ -181,21 +175,15 @@ fun Container.aufgabenPool(value: String): Tag {
                     setDragDropData("text/xml", it)
                 }
             }
-
         }
         div(rich = true) {
             marginTop = 60.px
             marginLeft = 370.px
-            button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.SECONDARY).onClick {
+            button(I18n.tr("Task"), style = ButtonStyle.SECONDARY).onClick {
                 Alert.show(
-                    I18n.tr("Aufgabenstellung: Lektion 1, Lesson3"),
-                    "Fügen Sie die richtigen Wortpaare zusammen.",
+                    I18n.tr("Task: Lesson 1, Exercise 3"),
+                    I18n.tr("Put the correct word pairs together."),
                     animation = false )
-
-
-
-
-
             }
         }
         div(""){
@@ -203,7 +191,6 @@ fun Container.aufgabenPool(value: String): Tag {
             marginLeft = 180.px
             add(lessonsSlider(""))
         }
-
     }
 }
 

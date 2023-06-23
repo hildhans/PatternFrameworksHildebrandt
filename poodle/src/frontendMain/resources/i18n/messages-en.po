@@ -51,16 +51,24 @@ msgstr ""
 msgid "Favourites"
 msgstr ""
 
-#: ../src/frontendMain/kotlin/com/p_f/ListPanel.kt:72
-msgid "Favourite"
+#: ../src/frontendMain/kotlin/com/p_f/MainMenu.kt:78
+msgid "You're doing great. Keep it up!"
 msgstr ""
 
-#: ../src/frontendMain/kotlin/com/p_f/ListPanel.kt:78
-msgid "Delete"
+#: ../src/frontendMain/kotlin/com/p_f/MainMenu.kt:69
+msgid "Hello"
 msgstr ""
 
-#: ../src/frontendMain/kotlin/com/p_f/MainPanel.kt:15
-msgid "Add new address"
+#: ../src/frontendMain/kotlin/com/p_f/ActionPanel.kt:25
+msgid "Placeholder"
+msgstr ""
+
+#: ../src/frontendMain/kotlin/com/p_f/ActionPanel.kt:35
+msgid "Placeholder"
+msgstr ""
+
+#: ../src/frontendMain/kotlin/com/p_f/ActionPanel.kt:45
+msgid "Placeholder"
 msgstr ""
 
 #: ../src/frontendMain/kotlin/com/p_f/Security.kt:59

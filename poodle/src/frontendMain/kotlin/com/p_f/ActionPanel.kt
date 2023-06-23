@@ -1,36 +1,62 @@
 package com.p_f
 
-import io.kvision.core.Container
+import io.kvision.core.AlignContent
+import io.kvision.core.AlignItems
 import io.kvision.core.JustifyContent
 import io.kvision.html.ButtonStyle
 import io.kvision.html.button
 import io.kvision.html.div
+import io.kvision.i18n.I18n
 import io.kvision.panel.HPanel
-import io.kvision.i18n.I18n.tr
+import io.kvision.modal.Alert
 import io.kvision.panel.hPanel
 import io.kvision.state.bind
 import io.kvision.utils.px
 import kotlinx.browser.document
 
-fun Container.actionPanel() {
-    hPanel(spacing = 5) {
-        button(tr(""), "fas fa-home fa-2xl", style = ButtonStyle.LIGHT).onClick {
-            width = 30.px// @ToDo nur UserAddresse
-        }
+object ActionPanel : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = AlignItems.CENTER, spacing = 10) {
+    init {
+        hPanel(spacing = 10) {
+            button(I18n.tr(""), "fas fa-home fa-2xl", style = ButtonStyle.LIGHT) {
+                alignContent = AlignContent.CENTER
+                width =  60.px// @ToDo nur UserAddresse
+                height = 60.px// @ToDo nur UserAddresse
+                onClick {
+                    Alert.show( I18n.tr("Placeholder"),
+                        animation = false )
+                }
+            }
 
-        button(tr(""), "fas fa-bell fa-2xl", style = ButtonStyle.LIGHT).onClick {
-            width = 30.px// @Todo
-        }
+            button(I18n.tr(""), "fas fa-bell fa-2xl", style = ButtonStyle.LIGHT) {
+                alignContent = AlignContent.CENTER
+                width =  60.px// @ToDo
+                height = 60.px// @ToDo
+                onClick {
+                    Alert.show( I18n.tr("Placeholder"),
+                        animation = false )
+                }
+            }
 
-        button(tr(""), "fas fa-gear fa-2xl", style = ButtonStyle.LIGHT).onClick {
-            width = 30.px// @ToDo icon button https://www.w3schools.com/icons/icons_reference.asp
-        }
+            button(I18n.tr(""), "fas fa-gear fa-2xl", style = ButtonStyle.LIGHT) {
+                alignContent = AlignContent.CENTER
+                width =  60.px// @ToDo
+                height = 60.px// @ToDo icon button https://www.w3schools.com/icons/icons_reference.asp
+                onClick {
+                    Alert.show( I18n.tr("Placeholder"),
+                                animation = false )
+                }
+            }
 
-        div().bind(Model.user) { user ->
-            if (user.name != null) {
-                button("${user.name}", "fas fa-power-off fa-2xl", style = ButtonStyle.LIGHT).onClick {
-                    width = 30.px
-                    document.location?.href = "/logout"
+            div().bind(Model.user) { user ->
+                if (user.name != null) {
+                    button(I18n.tr(""), "fas fa-power-off fa-2xl", style = ButtonStyle.LIGHT) {
+                        alignContent = AlignContent.CENTER
+                        height = 60.px
+                        width =  60.px// @ToDo
+                        onClick {
+                            document.location?.href = "/logout"
+                        }
+                    }
                 }
             }
         }
