@@ -36,7 +36,8 @@ class App : Application() {
             //}
         }
         AppScope.launch {
-            Model.getUserAddressList()
+            Model.registerUser(Model.firstUser.value, "Test_12345")
+            Model.readUser()
         }
     }
 }

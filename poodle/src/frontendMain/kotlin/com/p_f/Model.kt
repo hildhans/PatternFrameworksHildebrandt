@@ -15,6 +15,8 @@ object Model {
 
     val userAddress: ObservableList<Address> = observableListOf()
     val user = ObservableValue(User())
+    val firstUser = ObservableValue(User(0,"Test", "test", "Test_12345", "Test_12345")
+    )
 
     var search: String? = null
         set(value) {
