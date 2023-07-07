@@ -1,4 +1,4 @@
-package com.example
+package com.p_f
 
 import io.kvision.core.*
 import io.kvision.html.Tag
@@ -15,7 +15,7 @@ fun Container.taskBackground(value: String): Tag {
         height = 600.px
         marginLeft = 100.px
 
-        add(aufgabenPool(""))
+        add(lessonsSlider(""))
 
 
     }
