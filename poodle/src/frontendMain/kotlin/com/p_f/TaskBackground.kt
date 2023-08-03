@@ -15,7 +15,8 @@ fun Container.taskBackground(value: String): Tag {
         height = 600.px
         marginLeft = 100.px
 
-        add(aufgabenPool(""))
+        add(lessonsSlider(""))
+        //add(aufgabenPool(""))
 
 
     }
