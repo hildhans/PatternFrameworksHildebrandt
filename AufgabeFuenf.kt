@@ -22,51 +22,75 @@ data class Flashcard(val question: String, val answer: String)
 class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
 
     private val flashcards = mutableListOf(
-        Flashcard("We like to dance", "Yes, we like it very much"),
-        Flashcard("Do you have a dog", "Yes, his name ist Benno"),
-        Flashcard("I traveled to Budapest, when", "I was a studend"),
-        Flashcard("When I am at home", "I usually relax."),
+        Flashcard("er", "he"),
+        Flashcard("sie", "they"),
+        Flashcard("wir", "we"),
+        Flashcard("ich", "I"),
+        Flashcard("es", "it"),
+        Flashcard("du", "you"),
+        Flashcard("Sie(höflich)", "you"),
     )
 
     private var currentFlashcardIndex = 0
 
 
+    init {
 
-        init {
-            button("Next Flashcard").onClick {
+
+        button(I18n.tr("Nächste Flashcard"), style = ButtonStyle.INFO) {
+            width = 250.px
+            marginTop = 20.px
+            fontSize = 15.px
+            fontFamily = "Arial"
+            marginBottom = 50.px
+            onClick {
                 currentFlashcardIndex = (currentFlashcardIndex + 1) % flashcards.size
                 flashcards[currentFlashcardIndex].question
             }
-            div {
-                button("Frage: ").onClick {
-                    +flashcards[currentFlashcardIndex].question
-                }
-            }
-            div {
-                button("Antwort: ").onClick {
-                    +flashcards[currentFlashcardIndex].answer
-                }
+        }
 
-            }
-
-            button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.SECONDARY).onClick {
+        div{
+        button(I18n.tr("auf Deutsch: "), style = ButtonStyle.SECONDARY) {
+            width = 250.px
+            marginTop = 20.px
+            fontSize = 15.px
+            fontFamily = "Arial"
+            marginBottom = 50.px
+            onClick {
                 Alert.show(
-                    I18n.tr("Aufgabenstellung: Lektion 1, Lesson 5"),
-                    "Merke dir, welche Fagen zu welchen Antworten gehören.",
-                    animation = false )
+                    I18n.tr("deutsche Übersetzung: ")
+                            + flashcards[currentFlashcardIndex].question
+                )
             }
-
-
-
-            }
-
-
-companion object {
-    fun run(container: Container) {
-        container.add(AufgabeFuenf())
+        }
     }
-}
-}
+        div{
+            button(I18n.tr("auf Englisch: "), style = ButtonStyle.OUTLINESECONDARY)
+            width = 250.px
+            marginTop = 20.px
+            fontSize = 15.px
+            fontFamily = "Arial"
+            marginBottom = 50.px
+            onClick {
+                Alert.show(
+                    I18n.tr("englische Übersetzung: ")
+                            + flashcards[currentFlashcardIndex].answer
+                )
+
+            }
+        }
+
+        }
+
+
+
+          companion object {
+                fun run(container: Container) {
+                    container.add(AufgabeFuenf())
+                }
+            }
+            }
+
 
 
 
