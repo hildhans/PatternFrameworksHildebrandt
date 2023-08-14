@@ -67,31 +67,58 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
       val list = observableListOf('h', 's', 'e','l', 'd','l', 'e','o')
         return list
     }*/
-    fun newletterlist(): List<List<Char>> {
+//Vorbereitung 10 Buchstaben einzeln aus Liste in newletterlist()
+
+    // Erstelle einen Zähler
+    var counterletter = 0
+    fun newletterlist(): MutableList<List<Char>> {
         // Erstelle eine Liste mit 10 Listen von Zeichen
-        val list = observableListOf<List<Char>>()
-
-        // Erstelle einen Zähler
-        var counter = 0
-
+       // var letterlist = observableListOf<List<Char>>()
+        val letterlist = mutableListOf<List<Char>>()
+        letterlist.clear()
         // Wiederhole so lange, bis der Zähler 10 erreicht hat
-        while (counter < 9) {
-            // Erstelle eine Liste mit 10 zufälligen Zeichen
-            val sublist = observableListOf<Char>()
-            for (i in 0..9) {
-                sublist.add(('a'..'z').random())
-            }
+        //while (counterletter < 9) {
+            if (true)
+            {
+                // Erstelle eine Liste mit 10 zufälligen Zeichen
+                val sublist = observableListOf<Char>()
+
+                for (i in 0..9) {
+                    sublist.add(('a'..'z').random())
+                }
+
 
             // Füge die Liste zur Liste hinzu
-            list.add(sublist)
+            letterlist.add(sublist)
 
             // Erhöhe den Zähler um eins
-            counter++
+            counterletter++
         }
+            else {
+                // Setze den Zähler zurück
+                counterletter = 0
+            }
 
-        // Gib die Liste zurück
-        return list
+        // Konvertiere die `observableList` in eine Liste von Zeichen
+        //val letters = letterlist.flatMap { it }
+        var letters = letterlist.flatMap { it }
+
+        //Test in 10 Liten mit einem Char aufspalten, Achtung Return Funktion zu any geändert wegen Test
+            val result = mutableListOf<List<Char>>()
+            for (i in 0 until letters.size) {
+                result.add(listOf(letters[i]))
+            }
+            return result
+
+       // return letters
+
+        /*// Gib die Liste zurück
+        return letters*/
+
+        /*// Gib die Liste zurück
+        return list*/
     }
+
 
 
     init {
@@ -121,15 +148,16 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             marginTop = 60.px
             marginLeft = 370.px
             button(I18n.tr("Check"), style = ButtonStyle.SECONDARY).onClick {
-                /*Alert.show(
+                Alert.show(
                     I18n.tr("Check"),
                     I18n.tr("Good job!"),
-                    animation = false )*/
-                newletterlist().toString()
+                    animation = false )
+                newletterlist()
+
             }
         }
 
-        div(rich = true) { //Check Button
+        div(rich = true) { //Translation Button
             marginTop = 60.px
             marginLeft = 370.px
             button(I18n.tr("Translation"), style = ButtonStyle.SECONDARY).onClick {
@@ -142,9 +170,10 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
         }
 
-        val list = observableListOf(
+        var list = observableListOf(
 
-            newletterlist().toString()
+            tr(newletterlist().toString()
+            )
         )
 
 
@@ -161,7 +190,8 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                 setDropTargetData("text/xml") { data ->
                     if (data != null) {
                         listBlue.remove(data)
-                        list.add(data)
+                        //list.add(data)
+
                     }
                 }
             }.bindEach(list) {
