@@ -77,7 +77,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         val letterlist = mutableListOf<List<Char>>()
         letterlist.clear()
         // Wiederhole so lange, bis der Zähler 10 erreicht hat
-        //while (counterletter < 9) {
+        //while (counterletter < 9) { test
             if (true)
             {
                 // Erstelle eine Liste mit 10 zufälligen Zeichen
