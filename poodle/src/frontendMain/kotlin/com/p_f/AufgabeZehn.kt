@@ -21,9 +21,10 @@ import io.kvision.i18n.I18n.tr
 import io.kvision.modal.Alert
 import io.kvision.panel.hPanel
 import io.kvision.state.ObservableList
+
 import io.kvision.state.bindEach
 import io.kvision.state.observableListOf
-
+import kotlin.collections.List
 
 //class AufgabeZehn(className: String? = null,/* init: Card.() -> Unit? = null*/) : DesktopWindow()
 class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800) {
@@ -71,7 +72,79 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
     // Erstelle einen Zähler
     var counterletter = 0
-    fun newletterlist(): MutableList<List<Char>> {
+    //Versuch nur ein Buchstabe, ohne liste
+
+    fun getRandomLetter(): Char {
+// Erstelle eine Liste mit allen Buchstaben des Alphabets
+        var letters = listOf(
+            'a',
+            'b',
+            'c',
+            'd',
+            'e',
+            'f',
+            'g',
+            'h',
+            'i',
+            'j',
+            'k',
+            'l',
+            'm',
+            'n',
+            'o',
+            'p',
+            'q',
+            'r',
+            's',
+            't',
+            'u',
+            'v',
+            'w',
+            'x',
+            'y',
+            'z'
+        )
+
+// Wähle einen zufälligen Buchstaben aus der Liste
+        var randomLetter = letters.random()
+
+// Gib den Buchstaben zurück
+        return randomLetter
+    }
+    var vocabletter = '?'
+
+    fun getVocabLetter():List<Char> {
+        //if ( counter == 1 ) return  vocabletter='c'
+
+            // Überprüfe, ob die Zählervariable gleich 1 ist
+          //  if (counter == 1) {
+        if (true) {
+                // Gib die Liste mit den drei Buchstaben zurück
+                return listOf('c', 'a', 'r')
+            } else {
+                // Gib eine leere Liste zurück
+                return emptyList()
+            }
+
+    }
+
+
+    //fkt, aber gibt immer noch in einer Liste aus
+    /*fun newletterlist(): List<List<Char>> {
+        // Erstelle eine Liste mit 10 Listen
+        val lists = (1..10).map { observableListOf<Char>() }
+
+        // Füge zufällige Buchstaben zu den Listen hinzu
+        for (i in 0 until 10) {
+            lists[i].add(('a'..'z').random())
+        }
+
+        // Gib die Liste zurück
+        return lists
+    }*/
+
+    // Liste mit subliste Version
+    /*fun newletterlist(): MutableList<List<Char>> {
         // Erstelle eine Liste mit 10 Listen von Zeichen
        // var letterlist = observableListOf<List<Char>>()
         val letterlist = mutableListOf<List<Char>>()
@@ -110,14 +183,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             }
             return result
 
-       // return letters
-
-        /*// Gib die Liste zurück
-        return letters*/
-
-        /*// Gib die Liste zurück
-        return list*/
-    }
+    }*/
 
 
 
@@ -132,6 +198,33 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         this.marginTop = 10.px
         this.minHeight = 400.px
 
+        //Liste links startbox Buchstaben
+        var list = observableListOf(
+    //8 zufällige Buchstaben
+            tr(getRandomLetter().toString()) ,
+            tr(getRandomLetter().toString()),
+            tr(getRandomLetter().toString()) ,
+            tr(getRandomLetter().toString()),
+            tr(getRandomLetter().toString()) ,
+            tr(getRandomLetter().toString()),
+            tr(getRandomLetter().toString()) ,
+            tr(getRandomLetter().toString()),
+            tr(getVocabLetter().toString())
+        )
+        fun updateList() {
+            // Aktualisiere den Inhalt der Liste
+            list.clear()
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+
+            list.add(tr(getVocabLetter().toString()))
+        }
         div(rich = true) {
             marginTop = 60.px
             marginLeft = 370.px
@@ -152,7 +245,9 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                     I18n.tr("Check"),
                     I18n.tr("Good job!"),
                     animation = false )
-                newletterlist()
+                updateList()
+                //getRandomLetter()
+               // newletterlist()
 
             }
         }
@@ -170,11 +265,8 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
         }
 
-        var list = observableListOf(
+        // hier liegt Problem, dass Buchstabe nicht aktualisiert wird
 
-            tr(newletterlist().toString()
-            )
-        )
 
 
 
@@ -190,7 +282,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                 setDropTargetData("text/xml") { data ->
                     if (data != null) {
                         listBlue.remove(data)
-                        //list.add(data)
+                        list.add(data)
 
                     }
                 }
@@ -251,16 +343,12 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
     }*/
 
-   /* private fun <T> Array(size: Int): Array<T> {
-
-        return  String
-        //TODO("Provide the return value")
-    }*/
     companion object {
         fun run(container: Container) {
             container.add(AufgabeZehn())
         }
     }
+
 
 }
 
