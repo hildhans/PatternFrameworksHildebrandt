@@ -48,8 +48,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         // Wiederhole so lange, bis der Zähler die Größe der Liste erreicht hat
         if (counter < words.size) {
             // Gebe das aktuelle Wort in einem Alert aus
-            /*val alert = Alert(null, words[counter], "OK")
-            alert.show()*/
             Alert.show(
                 I18n.tr("Translate the following:"),
                 I18n.tr(words[counter]),
@@ -111,81 +109,51 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 // Gib den Buchstaben zurück
         return randomLetter
     }
-    var vocabletter = '?'
+    //var vocabletter = '?'
 
-    fun getVocabLetter():List<Char> {
+    /*eleganter als hardcode, eine Fkt, die den String fetcht, der gerade in Translate angezeigt wird und mir daraus eine Liste erstellt
+    dann eine Funktion,die die aufsplittet und mir alle Buchstaben einzeln ausgibt
+    --> so
+    */
+    val letters = getVocabLetter()
+    /*fun getCarLetter(): Array<Char> {
+        // Erstelle drei Variablen des Typs Char
+        val letterC = 'c'
+        val letterA = 'a'
+        val letterR = 'r'
+
+        // Gib die drei Variablen zurück
+        return arrayOf(letterC, letterA, letterR)
+    }*/
+
+    fun getVocabLetter(): Array<Char> {
+        // Erstelle ein Array mit 26 Elementen des Typs Char
+        val letters = Array(26) { 'a' }
+
+        // Setze die Buchstaben des Alphabets in das Array
+        for (i in 0 until 26) {
+            letters[i] = ('a' + i).toChar()
+        }
+
+        // Gib das Array zurück
+        return letters
+    }
+
+   /* fun getCarLetterOld(): Any {
         //if ( counter == 1 ) return  vocabletter='c'
 
             // Überprüfe, ob die Zählervariable gleich 1 ist
           //  if (counter == 1) {
-        if (true) {
-                // Gib die Liste mit den drei Buchstaben zurück
-                return listOf('c', 'a', 'r')
-            } else {
-                // Gib eine leere Liste zurück
-                return emptyList()
-            }
-
-    }
-
-
-    //fkt, aber gibt immer noch in einer Liste aus
-    /*fun newletterlist(): List<List<Char>> {
-        // Erstelle eine Liste mit 10 Listen
-        val lists = (1..10).map { observableListOf<Char>() }
-
-        // Füge zufällige Buchstaben zu den Listen hinzu
-        for (i in 0 until 10) {
-            lists[i].add(('a'..'z').random())
+        return if (true) {
+            // Gib die Liste mit den drei Buchstaben zurück
+            // return listOf('c', 'a', 'r')
+            charArrayOf('c','a','r')
+        } else {
+            // Gib eine leere Liste zurück
+            charArrayOf('?')
         }
 
-        // Gib die Liste zurück
-        return lists
     }*/
-
-    // Liste mit subliste Version
-    /*fun newletterlist(): MutableList<List<Char>> {
-        // Erstelle eine Liste mit 10 Listen von Zeichen
-       // var letterlist = observableListOf<List<Char>>()
-        val letterlist = mutableListOf<List<Char>>()
-        letterlist.clear()
-        // Wiederhole so lange, bis der Zähler 10 erreicht hat
-        //while (counterletter < 9) { test
-            if (true)
-            {
-                // Erstelle eine Liste mit 10 zufälligen Zeichen
-                val sublist = observableListOf<Char>()
-
-                for (i in 0..9) {
-                    sublist.add(('a'..'z').random())
-                }
-
-
-            // Füge die Liste zur Liste hinzu
-            letterlist.add(sublist)
-
-            // Erhöhe den Zähler um eins
-            counterletter++
-        }
-            else {
-                // Setze den Zähler zurück
-                counterletter = 0
-            }
-
-        // Konvertiere die `observableList` in eine Liste von Zeichen
-        //val letters = letterlist.flatMap { it }
-        var letters = letterlist.flatMap { it }
-
-        //Test in 10 Liten mit einem Char aufspalten, Achtung Return Funktion zu any geändert wegen Test
-            val result = mutableListOf<List<Char>>()
-            for (i in 0 until letters.size) {
-                result.add(listOf(letters[i]))
-            }
-            return result
-
-    }*/
-
-
 
     init {
         minWidth = 500.px
@@ -204,26 +172,31 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             tr(getRandomLetter().toString()) ,
             tr(getRandomLetter().toString()),
             tr(getRandomLetter().toString()) ,
+            tr(letters[0].toString()),
+            tr(letters[17].toString()),
             tr(getRandomLetter().toString()),
             tr(getRandomLetter().toString()) ,
             tr(getRandomLetter().toString()),
             tr(getRandomLetter().toString()) ,
+            tr(letters[2].toString()),
             tr(getRandomLetter().toString()),
-            tr(getVocabLetter().toString())
+
+            //tr(getVocabLetter().toString())
         )
-        fun updateList() {
+        fun updateListCar() {
             // Aktualisiere den Inhalt der Liste
             list.clear()
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[17].toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[2].toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(getRandomLetter().toString()))
-
-            list.add(tr(getVocabLetter().toString()))
+            list.add(tr(letters[0].toString()))
         }
         div(rich = true) {
             marginTop = 60.px
@@ -245,7 +218,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                     I18n.tr("Check"),
                     I18n.tr("Good job!"),
                     animation = false )
-                updateList()
+                updateListCar()
                 //getRandomLetter()
                // newletterlist()
 
@@ -265,7 +238,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
         }
 
-        // hier liegt Problem, dass Buchstabe nicht aktualisiert wird
 
 
 
