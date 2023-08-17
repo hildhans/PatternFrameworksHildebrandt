@@ -41,7 +41,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
     val richText = TextInput()
     // Erstelle einen Zähler für newvocab fun
     var counter = 0
-    fun newvocab() {
+    fun newvocab(): Int {
         // Erstelle eine Liste mit den drei Wörtern
         val words = listOf("Hallo", "Auto", "Auf Wiedersehen", "Flasche", "Tasche")
 
@@ -55,11 +55,14 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
             // Erhöhe den Zähler um eins
             counter++
+            //Version return String
+           // return words[counter]
         }
        else {
             // Setze den Zähler zurück
             counter = 0
         }
+        return counter
     }
 
     fun getRandomLetter(): Char {
@@ -191,7 +194,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             // Aktualisiere den Inhalt der Liste mit den Buchstaben für bottle
             list.clear()
             list.add(tr(getRandomLetter().toString()))
-            list.add(tr(getRandomLetter().toString()))
             list.add(tr(letters[14].toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(letters[19].toString()))
@@ -234,6 +236,9 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(letters[0].toString()))
         }
+
+
+
         div(rich = true) {
             marginTop = 60.px
             marginLeft = 370.px
@@ -254,18 +259,33 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                     I18n.tr("Check"),
                     I18n.tr("Good job!"),
                     animation = false )
-                updateListCar()
                 //getRandomLetter()
                // newletterlist()
 
             }
         }
+        var listTarget = observableListOf(
+            tr("")
+        )
+        // updatet target Box Zielbox Zielpanel
+        fun updateListTarget() {
+            // Aktualisiere den Inhalt der Liste mit den Buchstaben für bag
+            listTarget.clear()
 
+        }
         div(rich = true) { //Translation Button
             marginTop = 60.px
             marginLeft = 370.px
             button(I18n.tr("Translation"), style = ButtonStyle.SECONDARY).onClick {
-               newvocab()
+                updateListTarget()
+               newvocab() //aktualisiert die angezeigte Vokabel
+                // aktualisiert die Liste mit Buchstaben je nach Vokabel
+                    if (counter==1) updateListHello()
+                    if (counter==2) updateListCar()
+                    if (counter==3) updateListGoodbye()
+                    if (counter==4) updateListBottle()
+                    if (counter==5) updateListBag()
+
                /* Alert.show(
                     I18n.tr("Translate the following:"),
                     I18n.tr("Hallo"),
@@ -285,12 +305,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         }
 
 
-
-
-
-        val listBlue = observableListOf(
-            tr("")
-        )
         hPanel(justify = JustifyContent.CENTER, alignItems = AlignItems.FLEXSTART, useWrappers = true, spacing = 50) {
             hPanel(spacing = 10) { //grünes Panel Ausgangspanel
                // alignContent = AlignContent.CENTER
@@ -299,7 +313,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                 border = Border(2.px, BorderStyle.SOLID, Color.name(Col.GREEN))
                 setDropTargetData("text/xml") { data ->
                     if (data != null) {
-                        listBlue.remove(data)
+                        listTarget.remove(data)
                         list.add(data)
 
                     }
@@ -320,10 +334,10 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                 setDropTargetData("text/plain") { data ->
                     if (data != null) {
                         list.remove(data)
-                        listBlue.add(data)
+                        listTarget.add(data)
                     }
                 }
-            }.bindEach(listBlue) {
+            }.bindEach(listTarget) {
                 div(it, align = Align.CENTER) {
                     padding = 3.px
                     border = Border(1.px, BorderStyle.DASHED)
