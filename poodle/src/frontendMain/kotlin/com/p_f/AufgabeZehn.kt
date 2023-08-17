@@ -61,16 +61,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             counter = 0
         }
     }
-    /*fun newletterlist(): ObservableList<Char> {
-
-      val list = observableListOf('h', 's', 'e','l', 'd','l', 'e','o')
-        return list
-    }*/
-//Vorbereitung 10 Buchstaben einzeln aus Liste in newletterlist()
-
-    // Erstelle einen Zähler
-    var counterletter = 0
-    //Versuch nur ein Buchstabe, ohne liste
 
     fun getRandomLetter(): Char {
 // Erstelle eine Liste mit allen Buchstaben des Alphabets
@@ -139,22 +129,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         return letters
     }
 
-   /* fun getCarLetterOld(): Any {
-        //if ( counter == 1 ) return  vocabletter='c'
-
-            // Überprüfe, ob die Zählervariable gleich 1 ist
-          //  if (counter == 1) {
-        return if (true) {
-            // Gib die Liste mit den drei Buchstaben zurück
-            // return listOf('c', 'a', 'r')
-            charArrayOf('c','a','r')
-        } else {
-            // Gib eine leere Liste zurück
-            charArrayOf('?')
-        }
-
-    }*/
-
     init {
         minWidth = 500.px
         minHeight = 180.px
@@ -183,8 +157,55 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
             //tr(getVocabLetter().toString())
         )
+        fun updateListHello() {
+            // Aktualisiere den Inhalt der Liste mit den Buchstaben für hello
+            list.clear()
+            list.add(tr(letters[14].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[4].toString()))
+            list.add(tr(letters[7].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[11].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[11].toString()))
+        }
+        fun updateListGoodbye() {
+            // Aktualisiere den Inhalt der Liste mit den Buchstaben für goodbye
+            list.clear()
+            list.add(tr(letters[4].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[1].toString()))
+            list.add(tr(letters[3].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[24].toString()))
+            list.add(tr(letters[14].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[6].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[14].toString()))
+        }
+        fun updateListBottle() {
+            // Aktualisiere den Inhalt der Liste mit den Buchstaben für bottle
+            list.clear()
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[14].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[19].toString()))
+            list.add(tr(letters[4].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[19].toString()))
+            list.add(tr(letters[1].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[11].toString()))
+        }
+
         fun updateListCar() {
-            // Aktualisiere den Inhalt der Liste
+            // Aktualisiere den Inhalt der Liste mit den Buchstaben für car
             list.clear()
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(getRandomLetter().toString()))
@@ -194,6 +215,21 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(letters[2].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[0].toString()))
+        }
+        fun updateListBag() {
+            // Aktualisiere den Inhalt der Liste mit den Buchstaben für bag
+            list.clear()
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[1].toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(getRandomLetter().toString()))
+            list.add(tr(letters[6].toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(letters[0].toString()))
@@ -234,6 +270,16 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                     I18n.tr("Translate the following:"),
                     I18n.tr("Hallo"),
                     animation = false )*/
+            }
+
+        }
+        // hat noch keine Funktion, Idee, dass hier je nach Vokabel die richtige Fkt ausgeführt wird, um die Buchstaben zu setzen
+        div(rich = true) { //Start Button
+            marginTop = 60.px
+            marginLeft = 370.px
+            button(I18n.tr("Start"), style = ButtonStyle.SECONDARY).onClick {
+                //setzt die richtigen Buchstaben in die Ausgangsliste
+
             }
 
         }
