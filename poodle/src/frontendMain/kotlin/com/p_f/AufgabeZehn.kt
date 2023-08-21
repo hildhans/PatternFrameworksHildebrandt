@@ -238,7 +238,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         }
 
 
-
         div(rich = true) {
             marginTop = 60.px
             marginLeft = 370.px
@@ -250,41 +249,110 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             }
         }
 
-
-        div(rich = true) { //Check Button
-            marginTop = 60.px
-            marginLeft = 370.px
-            button(I18n.tr("Check"), style = ButtonStyle.SECONDARY).onClick {
-                Alert.show(
-                    I18n.tr("Check"),
-                    I18n.tr("Good job!"),
-                    animation = false )
-                //getRandomLetter()
-               // newletterlist()
-
-            }
-        }
         var listTarget = observableListOf(
             tr("")
         )
         // updatet target Box Zielbox Zielpanel
-        fun updateListTarget() {
-            // Aktualisiere den Inhalt der Liste mit den Buchstaben für bag
+        fun clearListTarget() {
+            //Leere den Inhalt der Liste mit den Buchstaben für bag
             listTarget.clear()
 
+        }
+
+        fun checkTransl(): Boolean {
+            // Erstelle einen String aus den Chars in der Liste
+            // Prüfe, ob der String gleich "car" ist
+            //var stringTarget = listTarget.joinToString("")
+            var stringTarget = listTarget.joinToString ("")
+            //return stringTarget
+            // prüfen hello (5)
+            if (stringTarget == "###KvI18nS###h###KvI18nS###e###KvI18nS###l###KvI18nS###l###KvI18nS###o"  && counter == 1) {
+                // Gib true zurück
+                return true
+                // println(stringTarget)
+            }
+            // prüfen car (3)
+            if (stringTarget == "###KvI18nS###c###KvI18nS###a###KvI18nS###r"  && counter == 2) {
+                // Gib true zurück
+               return true
+               // println(stringTarget)
+            }
+            //prüfen goodbye (7)
+            if (stringTarget == "###KvI18nS###g###KvI18nS###o###KvI18nS###o###KvI18nS###d###KvI18nS###b###KvI18nS###y###KvI18nS###e"  && counter == 3) {
+                // Gib true zurück
+                return true
+                // println(stringTarget)
+            }
+            // prüfen bottle (6)
+            if (stringTarget == "###KvI18nS###b###KvI18nS###o###KvI18nS###t###KvI18nS###t###KvI18nS###l###KvI18nS###e"  && counter == 4) {
+                // Gib true zurück
+                return true
+                // println(stringTarget)
+            }
+            // prüfen bag (3)
+            if (stringTarget == "###KvI18nS###b###KvI18nS###a###KvI18nS###g"  && counter == 5) {
+                // Gib true zurück
+                return true
+                // println(stringTarget)
+            }
+
+            else {
+                // Gib false zurück
+                return false
+               // println(stringTarget)
+            }
+           // return stringTarget*/
+        }
+        div(rich = true) { //Check Button
+            marginTop = 60.px
+            marginLeft = 370.px
+            button(I18n.tr("Check"), style = ButtonStyle.SECONDARY).onClick {
+                checkTransl()
+                if (checkTransl()) {
+                    Alert.show(
+                        I18n.tr("Check"),
+                        I18n.tr("That's right! Good job!"),
+                       // I18n.tr(checkCar()),
+                        animation = false
+                    )
+                    clearListTarget()
+                }
+                else {
+                    Alert.show(
+                        I18n.tr("Check"),
+                         I18n.tr("Not yet, try again!"),
+                        //I18n.tr(stringTarget),
+                        animation = false
+                    )
+                }
+                /*Alert.show(
+                    I18n.tr("Check"),
+                    I18n.tr("Good job!"),
+                    animation = false )*/
+
+            }
         }
         div(rich = true) { //Translation Button
             marginTop = 60.px
             marginLeft = 370.px
             button(I18n.tr("Translation"), style = ButtonStyle.SECONDARY).onClick {
-                updateListTarget()
-               newvocab() //aktualisiert die angezeigte Vokabel
-                // aktualisiert die Liste mit Buchstaben je nach Vokabel
-                    if (counter==1) updateListHello()
-                    if (counter==2) updateListCar()
-                    if (counter==3) updateListGoodbye()
-                    if (counter==4) updateListBottle()
-                    if (counter==5) updateListBag()
+
+                if (checkTransl()&& listTarget.isEmpty()) { // nur wenn richtig beantwortet und wenn die Liste leer ist
+                    //die leere Liste dient als Kontrolle, ob der User schon geprüft hat, dass richtig geantwortet wurde
+                   // clearListTarget()
+                    newvocab() //aktualisiert die angezeigte Vokabel
+                    // aktualisiert die Liste mit Buchstaben je nach Vokabel
+                    if (counter == 1) updateListHello()
+                    if (counter == 2) updateListCar()
+                    if (counter == 3) updateListGoodbye()
+                    if (counter == 4) updateListBottle()
+                    if (counter == 5) updateListBag()
+                }
+                else {
+                    clearListTarget()
+                    newvocab()
+                    updateListHello()
+                }
 
                /* Alert.show(
                     I18n.tr("Translate the following:"),
@@ -294,7 +362,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
         }
         // hat noch keine Funktion, Idee, dass hier je nach Vokabel die richtige Fkt ausgeführt wird, um die Buchstaben zu setzen
-        div(rich = true) { //Start Button
+       /* div(rich = true) { //Start Button
             marginTop = 60.px
             marginLeft = 370.px
             button(I18n.tr("Start"), style = ButtonStyle.SECONDARY).onClick {
@@ -302,7 +370,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 
             }
 
-        }
+        }*/
 
 
         hPanel(justify = JustifyContent.CENTER, alignItems = AlignItems.FLEXSTART, useWrappers = true, spacing = 50) {
