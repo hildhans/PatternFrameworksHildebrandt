@@ -106,23 +106,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
 // Gib den Buchstaben zurück
         return randomLetter
     }
-    //var vocabletter = '?'
-
-    /*eleganter als hardcode, eine Fkt, die den String fetcht, der gerade in Translate angezeigt wird und mir daraus eine Liste erstellt
-    dann eine Funktion,die die aufsplittet und mir alle Buchstaben einzeln ausgibt
-    --> so
-    */
     val letters = getVocabLetter()
-    /*fun getCarLetter(): Array<Char> {
-        // Erstelle drei Variablen des Typs Char
-        val letterC = 'c'
-        val letterA = 'a'
-        val letterR = 'r'
-
-        // Gib die drei Variablen zurück
-        return arrayOf(letterC, letterA, letterR)
-    }*/
-
     fun getVocabLetter(): Array<Char> {
         // Erstelle ein Array mit 26 Elementen des Typs Char
         val letters = Array(26) { 'a' }
@@ -264,8 +248,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         }
 
         fun checkTransl(): Boolean {
-            // Erstelle einen String aus den Chars in der Liste
-            // Prüfe, ob der String gleich "car" ist
             //var stringTarget = listTarget.joinToString("")
             var stringTarget = listTarget.joinToString ("")
             //return stringTarget
@@ -330,10 +312,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                         animation = false
                     )
                 }
-                /*Alert.show(
-                    I18n.tr("Check"),
-                    I18n.tr("Good job!"),
-                    animation = false )*/
 
             }
         }
@@ -374,29 +352,10 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                     showVocab()
                     updateListHello()
                 }
-                /*else {
-                    clearListTarget()
-                    newVocab()
-                    updateListHello()
-                }*/
-
-               /* Alert.show(
-                    I18n.tr("Translate the following:"),
-                    I18n.tr("Hallo"),
-                    animation = false )*/
             }
 
         }
-        // hat noch keine Funktion, Idee, dass hier je nach Vokabel die richtige Fkt ausgeführt wird, um die Buchstaben zu setzen
-       /* div(rich = true) { //Start Button
-            marginTop = 60.px
-            marginLeft = 370.px
-            button(I18n.tr("Start"), style = ButtonStyle.SECONDARY).onClick {
-                //setzt die richtigen Buchstaben in die Ausgangsliste
 
-            }
-
-        }*/
 
 
         hPanel(justify = JustifyContent.CENTER, alignItems = AlignItems.FLEXSTART, useWrappers = true, spacing = 50) {
@@ -446,28 +405,6 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                 }
 
         }
-
-    /*
-    open class Card(
-        className: String? = null,
-        init: (Card.() -> Unit?)?
-    ) : SimplePanel()
-*/
-   /* fun onclickvocab() {
-        //var index: Int = 1
-        var arrayTrans = ArrayList<String>()
-        arrayTrans[0] = "Auto"
-        arrayTrans[1] = "Auf Wiedersehen"
-        arrayTrans[2] = "Flasche"
-
-        Alert.show(
-            I18n.tr("Translate the following:"),
-            I18n.tr(arrayTrans[0]),
-            // I18n.tr(arrayTrans[index]),
-            animation = false )
-        //index = index +1
-
-    }*/
 
     companion object {
         fun run(container: Container) {
