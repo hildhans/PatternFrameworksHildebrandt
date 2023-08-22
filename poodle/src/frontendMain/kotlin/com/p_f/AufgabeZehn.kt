@@ -45,7 +45,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
     val words = listOf("Hallo", "Auto", "Auf Wiedersehen", "Flasche", "Tasche")
     fun newVocab(): Int {
         // Wiederhole so lange, bis der Zähler die Größe der Liste erreicht hat
-        if (counter < words.size ) {
+        if (counter < words.size-1 ) {
             // Gebe das aktuelle Wort in einem Alert aus
             counter++
             Alert.show(
