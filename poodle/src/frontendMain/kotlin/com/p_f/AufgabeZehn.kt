@@ -48,16 +48,10 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         if (counter < words.size-1 ) {
             // Gebe das aktuelle Wort in einem Alert aus
             counter++
-            Alert.show(
+            /*Alert.show(
                 I18n.tr("Translate the following:"),
                 I18n.tr(words[counter]),
-                animation = false )
-
-            // Erhöhe den Zähler um eins
-            //Verbesserungsvorschlag counter nur ++ wenn auch richtig, jetzt in checkTransl
-
-            //Version return String
-           // return words[counter]
+                animation = false )*/
         }
        else {
             // Setze den Zähler zurück
