@@ -41,20 +41,21 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
     val richText = TextInput()
     // Erstelle einen Zähler für newvocab fun
     var counter = 0
-    fun newvocab(): Int {
-        // Erstelle eine Liste mit den drei Wörtern
-        val words = listOf("Hallo", "Auto", "Auf Wiedersehen", "Flasche", "Tasche")
-
+    // Erstelle eine Liste mit den drei Wörtern
+    val words = listOf("Hallo", "Auto", "Auf Wiedersehen", "Flasche", "Tasche")
+    fun newVocab(): Int {
         // Wiederhole so lange, bis der Zähler die Größe der Liste erreicht hat
-        if (counter < words.size) {
+        if (counter < words.size ) {
             // Gebe das aktuelle Wort in einem Alert aus
+            counter++
             Alert.show(
                 I18n.tr("Translate the following:"),
                 I18n.tr(words[counter]),
                 animation = false )
 
             // Erhöhe den Zähler um eins
-            counter++
+            //Verbesserungsvorschlag counter nur ++ wenn auch richtig, jetzt in checkTransl
+
             //Version return String
            // return words[counter]
         }
@@ -63,6 +64,15 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             counter = 0
         }
         return counter
+
+    }
+    fun showVocab() {
+        // Gebe das aktuelle Wort in einem Alert aus
+        Alert.show(
+            I18n.tr("Translate the following:"),
+            I18n.tr(words[counter]),
+            animation = false
+        )
     }
 
     fun getRandomLetter(): Char {
@@ -187,7 +197,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             list.add(tr(letters[14].toString()))
             list.add(tr(getRandomLetter().toString()))
             list.add(tr(letters[6].toString()))
-            list.add(tr(getRandomLetter().toString()))
+           // list.add(tr(getRandomLetter().toString()))
             list.add(tr(letters[14].toString()))
         }
         fun updateListBottle() {
@@ -266,31 +276,32 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             var stringTarget = listTarget.joinToString ("")
             //return stringTarget
             // prüfen hello (5)
-            if (stringTarget == "###KvI18nS###h###KvI18nS###e###KvI18nS###l###KvI18nS###l###KvI18nS###o"  && counter == 1) {
+            if (stringTarget == "###KvI18nS###h###KvI18nS###e###KvI18nS###l###KvI18nS###l###KvI18nS###o" && counter == 0) {
                 // Gib true zurück
                 return true
+
                 // println(stringTarget)
             }
             // prüfen car (3)
-            if (stringTarget == "###KvI18nS###c###KvI18nS###a###KvI18nS###r"  && counter == 2) {
+            if (stringTarget == "###KvI18nS###c###KvI18nS###a###KvI18nS###r"  && counter == 1) {
                 // Gib true zurück
                return true
                // println(stringTarget)
             }
             //prüfen goodbye (7)
-            if (stringTarget == "###KvI18nS###g###KvI18nS###o###KvI18nS###o###KvI18nS###d###KvI18nS###b###KvI18nS###y###KvI18nS###e"  && counter == 3) {
+            if (stringTarget == "###KvI18nS###g###KvI18nS###o###KvI18nS###o###KvI18nS###d###KvI18nS###b###KvI18nS###y###KvI18nS###e"  && counter == 2) {
                 // Gib true zurück
                 return true
                 // println(stringTarget)
             }
             // prüfen bottle (6)
-            if (stringTarget == "###KvI18nS###b###KvI18nS###o###KvI18nS###t###KvI18nS###t###KvI18nS###l###KvI18nS###e"  && counter == 4) {
+            if (stringTarget == "###KvI18nS###b###KvI18nS###o###KvI18nS###t###KvI18nS###t###KvI18nS###l###KvI18nS###e"  && counter == 3) {
                 // Gib true zurück
                 return true
                 // println(stringTarget)
             }
             // prüfen bag (3)
-            if (stringTarget == "###KvI18nS###b###KvI18nS###a###KvI18nS###g"  && counter == 5) {
+            if (stringTarget == "###KvI18nS###b###KvI18nS###a###KvI18nS###g"  && counter == 4) {
                 // Gib true zurück
                 return true
                 // println(stringTarget)
@@ -315,7 +326,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
                        // I18n.tr(checkCar()),
                         animation = false
                     )
-                    clearListTarget()
+                   // clearListTarget()
                 }
                 else {
                     Alert.show(
@@ -337,22 +348,43 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             marginLeft = 370.px
             button(I18n.tr("Translation"), style = ButtonStyle.SECONDARY).onClick {
 
-                if (checkTransl()&& listTarget.isEmpty()) { // nur wenn richtig beantwortet und wenn die Liste leer ist
+                if (checkTransl()) { // nur wenn richtig beantwortet und wenn die Liste leer ist
                     //die leere Liste dient als Kontrolle, ob der User schon geprüft hat, dass richtig geantwortet wurde
-                   // clearListTarget()
-                    newvocab() //aktualisiert die angezeigte Vokabel
-                    // aktualisiert die Liste mit Buchstaben je nach Vokabel
-                    if (counter == 1) updateListHello()
-                    if (counter == 2) updateListCar()
-                    if (counter == 3) updateListGoodbye()
-                    if (counter == 4) updateListBottle()
-                    if (counter == 5) updateListBag()
-                }
-                else {
                     clearListTarget()
-                    newvocab()
+                    newVocab() //aktualisiert die angezeigte Vokabel, und erhöht counter
+                    // aktualisiert die Liste mit Buchstaben je nach Vokabel
+                    if (counter == 0) updateListHello()
+                    if (counter == 1) updateListCar()
+                    if (counter == 2) updateListGoodbye()
+                    if (counter == 3) updateListBottle()
+                    if (counter == 4) updateListBag()
+                }
+                /*if (counter==0) {
+                    clearListTarget()
+                    newVocab()
+                    updateListHello()
+                }*/
+                if (!checkTransl() && counter != 0) {
+                   //newVocab()
+                    showVocab()
+                }
+                //Startposition checkTransl falsch und string = ""
+                if (!checkTransl() && !listTarget.isEmpty() && counter != 0) {
+                    //clearListTarget()
+                    showVocab()
+
+                }
+                if (!checkTransl() && counter == 0) {
+                    //newVocab()
+                    clearListTarget()
+                    showVocab()
                     updateListHello()
                 }
+                /*else {
+                    clearListTarget()
+                    newVocab()
+                    updateListHello()
+                }*/
 
                /* Alert.show(
                     I18n.tr("Translate the following:"),
