@@ -18,8 +18,8 @@ open class DesktopWindow(caption: String, icon: String, width: Int, height: Int)
         width.px,
         height.px,
         closeButton = true,
-        maximizeButton = true,
-        minimizeButton = true,
+        maximizeButton = false,
+        minimizeButton = false,
     ) {
 
     override var top: CssSize?
