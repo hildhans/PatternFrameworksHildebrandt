@@ -1,97 +1,233 @@
 package com.p_f
 
-import io.kvision.core.Container
-import io.kvision.core.CssSize
-import io.kvision.core.UNIT
-import io.kvision.form.text.TextInput
-import io.kvision.utils.px
-import io.kvision.core.onClick
-import io.kvision.form.form
-import io.kvision.form.text.textAreaInput
+import io.kvision.core.*
 import io.kvision.html.ButtonStyle
+import io.kvision.html.Image
 import io.kvision.html.button
 import io.kvision.html.div
 import io.kvision.i18n.I18n
 import io.kvision.modal.Alert
+import io.kvision.modal.Modal
 import io.kvision.panel.gridPanel
 import io.kvision.panel.vPanel
-import io.kvision.panel.vPanel
+import io.kvision.utils.px
 
-data class Flashcard(val question: String, val answer: String)
+
+
+data class Flashcard(val deutsch: String, val englisch: String)
 
 class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
 
-    private val flashcards = mutableListOf(
+    val flashcards = mutableListOf(
         Flashcard("er", "he"),
-        Flashcard("sie", "they"),
-        Flashcard("wir", "we"),
-        Flashcard("ich", "I"),
+        Flashcard("sie", "she"),
         Flashcard("es", "it"),
         Flashcard("du", "you"),
+        Flashcard("wir", "we"),
+        Flashcard("ich", "I"),
         Flashcard("Sie(höflich)", "you"),
+        Flashcard("sie", "they")
     )
 
-    private var currentFlashcardIndex = 0
 
+    //  Flashcard("du", "you", require("img/dog.jpg")),
+    //var currentFlashcardIndex = 1
 
-    init {
-
-
-        button(I18n.tr("Nächste Flashcard"), style = ButtonStyle.INFO) {
-            width = 250.px
-            marginTop = 20.px
-            fontSize = 15.px
-            fontFamily = "Arial"
-            marginBottom = 50.px
-            onClick {
-                currentFlashcardIndex = (currentFlashcardIndex + 1) % flashcards.size
-                flashcards[currentFlashcardIndex].question
-            }
-        }
-
-        div{
-        button(I18n.tr("auf Deutsch: "), style = ButtonStyle.SECONDARY) {
-            width = 250.px
-            marginTop = 20.px
-            fontSize = 15.px
-            fontFamily = "Arial"
-            marginBottom = 50.px
-            onClick {
-                Alert.show(
-                    I18n.tr("deutsche Übersetzung: ")
-                            + flashcards[currentFlashcardIndex].question
-                )
-            }
-        }
+    val imageView_er = Image("img/er.jpg").apply {
+        height = 250.px
+        margin = 10.px
     }
-        div{
-            button(I18n.tr("auf Englisch: "), style = ButtonStyle.OUTLINESECONDARY)
-            width = 250.px
-            marginTop = 20.px
-            fontSize = 15.px
-            fontFamily = "Arial"
-            marginBottom = 50.px
-            onClick {
-                Alert.show(
-                    I18n.tr("englische Übersetzung: ")
-                            + flashcards[currentFlashcardIndex].answer
-                )
 
-            }
-        }
+    val imageView_sie = Image("img/sie.jpg").apply {
+        height = 250.px
+        margin = 10.px
+    }
 
-        }
+    val imageView_it = Image("img/it.jpg").apply {
+        height = 250.px
+        margin = 10.px
+    }
+
+    val imageView_du = Image("img/du.jpg").apply {
+        height = 250.px
+        margin = 10.px
+    }
+
+    val imageView_we = Image("img/wir.jpg").apply {
+        height = 250.px
+        margin = 10.px
+    }
+
+    val imageView_i = Image("img/ich.jpg").apply {
+        height = 250.px
+        margin = 10.px
+    }
 
 
+    val imageView_sie3 = Image("img/Sie_2.jpg").apply {
+        height = 250.px
+        margin = 10.px
+    }
 
-          companion object {
-                fun run(container: Container) {
-                    container.add(AufgabeFuenf())
+    val imageView_sie2 = Image("img/sie_3.jpg").apply {
+        height = 250.px
+        margin = 10.px
+    }
+
+
+    /*
+    val imageView = Image("img/cat.jpg").apply{
+        width = 200.px
+        height = 200.px
+        margin = 10.px
+    }
+    */
+    init {
+        this.marginTop = 20.px
+        this.minHeight = 600.px
+        background = Background(Color.name(Col.LIGHTGRAY))
+        vPanel(justify = JustifyContent.SPACEAROUND, alignItems = AlignItems.CENTER, spacing = 50) {
+            button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.LIGHT) {
+                alignContent = AlignContent.CENTER
+                margin = 2.px
+                width = 200.px
+                height = 50.px
+                marginTop = 20.px
+                fontSize = 15.px
+                fontFamily = "Arial"
+                background = Background(Color.name(Col.ROSYBROWN))
+                onClick {
+                    Alert.show(
+                        I18n.tr("Klicken Sie auf die Flashcards und merken Sie sich die jeweils englische Bezeichnung der Personalpronomen!"),
+                        animation = false
+                    )
                 }
             }
+        gridPanel(columnGap = 5, rowGap = 5, justifyItems = JustifyItems.CENTER) {
+            options(1, 1) {
+                add(imageView_er)
             }
 
+            options(2, 1) {
+                add(imageView_sie)
+            }
+            options(1, 2) {
+                add(imageView_it)
+            }
+
+            options(2, 2) {
+                add(imageView_du)
+            }
+
+            options(1, 3) {
+                add(imageView_we)
+            }
+
+            options(2, 3) {
+                add(imageView_i)
+            }
+            options(1, 4) {
+                add(imageView_sie3)
+            }
+            options(2, 4) {
+                add(imageView_sie2)
+            }
+
+        }
+
+        }
 
 
 
+        val modal = Modal(I18n.tr("Flashcard"))
+
+
+        modal.add(div {
+            imageView_er.onClick {
+                Alert.show(
+                    flashcards[0].deutsch + (":   ")
+                            + flashcards[0].englisch + (" ( ") + 1 + (" von  8)")
+                )
+
+                /* currentFlashcardIndex = (currentFlashcardIndex + 1) % flashcards.size
+              flashcards[currentFlashcardIndex].deutsch*/
+            }
+        })
+
+
+        modal.add(div {
+            imageView_sie.onClick {
+                Alert.show(
+                    flashcards[1].deutsch + (":   ")
+                            + flashcards[1].englisch + (" ( ") + 2 + (" von  8)")
+                )
+            }
+        })
+
+        modal.add(div {
+            imageView_it.onClick {
+                Alert.show(
+                    flashcards[2].deutsch + (":   ")
+                            + flashcards[2].englisch + (" ( ") + 3 + (" von  8)")
+                )
+            }
+        })
+
+        modal.add(div {
+            imageView_du.onClick {
+                Alert.show(
+                    flashcards[3].deutsch + (":   ")
+                            + flashcards[3].englisch + (" ( ") + 4 + (" von  8)")
+                )
+            }
+        })
+
+
+
+        modal.add(div {
+            imageView_we.onClick {
+                Alert.show(
+                    flashcards[4].deutsch + (":   ")
+                            + flashcards[4].englisch + (" ( ") + 5 + (" von  8)")
+                )
+            }
+        })
+
+        modal.add(div {
+            imageView_i.onClick {
+                Alert.show(
+                    flashcards[5].deutsch + (":   ")
+                            + flashcards[5].englisch + (" ( ") + 6 + (" von  8")
+                )
+            }
+        })
+
+
+        modal.add(div {
+            imageView_sie3.onClick {
+                Alert.show(
+                    flashcards[6].deutsch + (":   ")
+                            + flashcards[6].englisch + (" ( ") + 7 + (" von  8)")
+                )
+            }
+        })
+
+
+        modal.add(div {
+            imageView_sie2.onClick {
+                Alert.show(
+                    flashcards[7].deutsch + (":   ")
+                            + flashcards[7].englisch + (" ( ") + 8 + (" von  8)")
+                )
+            }
+        })
+    }
+
+
+    companion object {
+        fun run(container: Container) {
+            container.add(AufgabeFuenf())
+        }
+    }
+}
 
