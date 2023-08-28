@@ -6,12 +6,10 @@ import com.github.andrewoma.kwery.core.builder.query
 import io.ktor.server.application.*
 import io.ktor.server.sessions.*
 import org.apache.commons.codec.digest.DigestUtils
-import org.h2.command.dml.Update
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.statements.UpdateStatement
 import org.joda.time.DateTime
 import java.sql.ResultSet
 import java.time.ZoneId
@@ -31,8 +29,8 @@ actual class UserAddressService(private val call: ApplicationCall) : IUserAddres
                 val query = query {
                     select("SELECT * FROM address")
                     whereGroup {
-                        if(user.id != 1){
-                            where("user_id = :userid OR par_id = :userid")
+                        if(user.roleid != 1){
+                            where("""(user_id = :userid OR par_id = :userid)""")
                             //where("user_id = :userid")
                             parameter("userid", user.id)
                         }
@@ -65,6 +63,7 @@ actual class UserAddressService(private val call: ApplicationCall) : IUserAddres
                 it[name] = address.lastName!!
                 it[username] = address.userName!!
                 it[password] = DigestUtils.sha256Hex("Start_12345")
+                it[roleId] = 2
             } get UserDbo.id)
         }
         val key = dbQuery {
@@ -200,6 +199,7 @@ actual class RegisterUserService : IRegisterUserService {
                     it[this.name] = user.name!!
                     it[this.username] = user.username!!
                     it[this.password] = DigestUtils.sha256Hex(password)
+                    it[this.roleId] = 2
                 } get UserDbo.id
             }
             dbQuery {

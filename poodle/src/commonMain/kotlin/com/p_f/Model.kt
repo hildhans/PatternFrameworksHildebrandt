@@ -18,7 +18,8 @@ data class User(
     val name: String? = null,
     val username: String? = null,
     val password: String? = null,
-    val password2: String? = null
+    val password2: String? = null,
+    val roleid:Int? = null
 )
 
 @Serializable

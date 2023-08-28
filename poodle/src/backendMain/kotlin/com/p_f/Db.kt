@@ -28,25 +28,41 @@ object Db {
             create(UserAddressDbo)
 
             //insert der ersten Datensätze
+            UserRoleDbo.insert {
+                it[rolename] = "Administrator"
+                it[description] = "Administrator"
+            }
+            UserRoleDbo.insert {
+                it[rolename] = "Benutzer"
+                it[description] = "normaler Benutzer mit vielen Rechten"
+            }
+            UserRoleDbo.insert {
+                it[rolename] = "Kindzugang"
+                it[description] = "wurde von einem Benutzer unter seinem Account eingerichtet"
+            }
             UserDbo.insert {
                 it[name] = "Administrator"
                 it[username] = "admin"
                 it[password] = DigestUtils.sha256Hex("Admin_12345")
+                it[roleId] = 1
             }
             UserDbo.insert {
                 it[name] = "Test"
                 it[username] = "test"
                 it[password] = DigestUtils.sha256Hex("Test_12345")
+                it[roleId] = 2
             }
             UserDbo.insert {
                 it[name] = "Keiner"
                 it[username] = "keiner"
                 it[password] = DigestUtils.sha256Hex("Test_12345")
+                it[roleId] = 2
             }
             UserDbo.insert {
                 it[name] = "Buche"
                 it[username] = "buche"
                 it[password] = DigestUtils.sha256Hex("Test_12345")
+                it[roleId] = 2
             }
             UserAddressDbo.insert {
                 it[firstName] = "Chef"

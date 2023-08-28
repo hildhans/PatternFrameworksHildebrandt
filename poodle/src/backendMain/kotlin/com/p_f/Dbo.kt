@@ -14,8 +14,15 @@ object UserTestDbo : Table("ut") {
     val testId = reference("test_id", UserDbo.id, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
 }
 
+object UserRoleDbo : Table("role") {
+    val id = integer("id").primaryKey().autoIncrement()
+    val rolename = varchar("role_name", 255)
+    val description = varchar("description", 255)
+}
+
 object UserDbo : Table("user") {
     val id = integer("id").primaryKey().autoIncrement()
+    val roleId = reference("user_id", UserRoleDbo.id, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
     val name = varchar("name", 255)
     val username = varchar("username", 255).uniqueIndex()
     val password = varchar("password", 255)
@@ -34,5 +41,4 @@ object UserAddressDbo : Table("address") {
     val createdAt = datetime("created_at").nullable()
     val userId = reference("user_id", UserDbo.id, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
     val parID = integer("par_id").nullable()
-   // val parID = reference("par_id", UserDbo.id, ReferenceOption.CASCADE, ReferenceOption.CASCADE).nullable()
 }
