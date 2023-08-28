@@ -26,7 +26,8 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         Flashcard("wir", "we"),
         Flashcard("ich", "I"),
         Flashcard("Sie(höflich)", "you"),
-        Flashcard("sie", "they")
+        Flashcard("sie", "they"),
+        Flashcard("ihr", "you")
     )
 
 
@@ -74,6 +75,11 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         margin = 10.px
     }
 
+    val imageView_ihr = Image("img/ihr.jpg").apply {
+        height = 250.px
+        margin = 10.px
+    }
+
 
     /*
     val imageView = Image("img/cat.jpg").apply{
@@ -98,7 +104,8 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
                 background = Background(Color.name(Col.ROSYBROWN))
                 onClick {
                     Alert.show(
-                        I18n.tr("Klicken Sie auf die Flashcards und merken Sie sich die jeweils englische Bezeichnung der Personalpronomen!"),
+                        I18n.tr("Aufgabenstellung: Lektion 1, Lesson 5"),
+                        "Klicken Sie auf die Flashcards und merken Sie sich die jeweils englische Bezeichnung der Personalpronomen!",
                         animation = false
                     )
                 }
@@ -132,6 +139,9 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
             options(2, 4) {
                 add(imageView_sie2)
             }
+            options(1, 5) {
+                add(imageView_ihr)
+            }
 
         }
 
@@ -145,8 +155,8 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         modal.add(div {
             imageView_er.onClick {
                 Alert.show(
-                    flashcards[0].deutsch + (":   ")
-                            + flashcards[0].englisch + (" ( ") + 1 + (" von  8)")
+                    I18n.tr( flashcards[0].deutsch),
+                            flashcards[0].englisch + (" (") + 1 + (" von  9)")
                 )
 
                 /* currentFlashcardIndex = (currentFlashcardIndex + 1) % flashcards.size
@@ -158,8 +168,8 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         modal.add(div {
             imageView_sie.onClick {
                 Alert.show(
-                    flashcards[1].deutsch + (":   ")
-                            + flashcards[1].englisch + (" ( ") + 2 + (" von  8)")
+                    I18n.tr(flashcards[1].deutsch),
+                        flashcards[1].englisch + (" (") + 2 + (" von  9)")
                 )
             }
         })
@@ -167,8 +177,8 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         modal.add(div {
             imageView_it.onClick {
                 Alert.show(
-                    flashcards[2].deutsch + (":   ")
-                            + flashcards[2].englisch + (" ( ") + 3 + (" von  8)")
+                    I18n.tr(flashcards[2].deutsch),
+                            flashcards[2].englisch + (" (") + 3 + (" von  9)")
                 )
             }
         })
@@ -176,19 +186,17 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         modal.add(div {
             imageView_du.onClick {
                 Alert.show(
-                    flashcards[3].deutsch + (":   ")
-                            + flashcards[3].englisch + (" ( ") + 4 + (" von  8)")
+                    I18n.tr(flashcards[3].deutsch),
+                            flashcards[3].englisch + (" (") + 4 + (" von  9)")
                 )
             }
         })
 
-
-
         modal.add(div {
             imageView_we.onClick {
                 Alert.show(
-                    flashcards[4].deutsch + (":   ")
-                            + flashcards[4].englisch + (" ( ") + 5 + (" von  8)")
+                    I18n.tr(flashcards[4].deutsch),
+                            flashcards[4].englisch + (" (") + 5 + (" von  9)")
                 )
             }
         })
@@ -196,18 +204,17 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         modal.add(div {
             imageView_i.onClick {
                 Alert.show(
-                    flashcards[5].deutsch + (":   ")
-                            + flashcards[5].englisch + (" ( ") + 6 + (" von  8")
+                    I18n.tr(flashcards[5].deutsch),
+                    flashcards[5].englisch + (" (") + 6 + (" von  9")
                 )
             }
         })
 
-
         modal.add(div {
             imageView_sie3.onClick {
                 Alert.show(
-                    flashcards[6].deutsch + (":   ")
-                            + flashcards[6].englisch + (" ( ") + 7 + (" von  8)")
+                    I18n.tr(flashcards[6].deutsch),
+                    flashcards[6].englisch + (" (") + 7 + (" von  9)")
                 )
             }
         })
@@ -216,8 +223,16 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         modal.add(div {
             imageView_sie2.onClick {
                 Alert.show(
-                    flashcards[7].deutsch + (":   ")
-                            + flashcards[7].englisch + (" ( ") + 8 + (" von  8)")
+                    I18n.tr(flashcards[7].deutsch),
+                            flashcards[7].englisch + (" (") + 8 + (" von  9)")
+                )
+            }
+        })
+        modal.add(div {
+            imageView_ihr.onClick {
+                Alert.show(
+                    I18n.tr(flashcards[8].deutsch),
+                    flashcards[8].englisch + (" (") + 9 + (" von  9)")
                 )
             }
         })
