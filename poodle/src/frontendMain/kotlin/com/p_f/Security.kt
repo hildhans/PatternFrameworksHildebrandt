@@ -26,6 +26,7 @@ class LoginWindow : Dialog<Credentials>(closeButton = false, escape = false, ani
     private val cancelButton: Button
 
     init {
+
         loginPanel = formPanel {
             add(Credentials::username, Text(label = "${tr("Login")}:"), required = true)
             add(Credentials::password, Password(label = "${tr("Password")}:"), required = true)

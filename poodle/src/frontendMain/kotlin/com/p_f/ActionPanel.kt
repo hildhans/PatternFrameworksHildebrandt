@@ -22,12 +22,17 @@ object ActionPanel : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = A
                 width =  60.px// @ToDo nur UserAddresse
                 height = 60.px// @ToDo nur UserAddresse
                 onClick {
-                    Alert.show( I18n.tr("Placeholder"),
-                        animation = false )
+                    PoodlePanel.remove(UserSettings)
+                    PoodlePanel.removeAll()
+                    refresh()
+                    PoodlePanel.refresh()
+                    PoodlePanel.add(MainMenu)
+                    PoodlePanel.add(MainPart)
+                    refresh()
                 }
             }
 
-            button(I18n.tr(""), "fas fa-bell fa-2xl", style = ButtonStyle.LIGHT) {
+            button(I18n.tr(""), "fas fa-bell fa-2xl", style = ButtonStyle.LIGHT, className = "Messages") {
                 alignContent = AlignContent.CENTER
                 width =  60.px// @ToDo
                 height = 60.px// @ToDo
@@ -37,13 +42,18 @@ object ActionPanel : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = A
                 }
             }
 
-            button(I18n.tr(""), "fas fa-gear fa-2xl", style = ButtonStyle.LIGHT) {
+            button(I18n.tr(""), "fas fa-gear fa-2xl", style = ButtonStyle.LIGHT, className = "UserSettings") {
                 alignContent = AlignContent.CENTER
                 width =  60.px// @ToDo
                 height = 60.px// @ToDo icon button https://www.w3schools.com/icons/icons_reference.asp
                 onClick {
-                    Alert.show( I18n.tr("Placeholder"),
-                                animation = false )
+                    PoodlePanel.remove(MainPart)
+                    PoodlePanel.removeAll()
+                    refresh()
+                    PoodlePanel.refresh()
+                    PoodlePanel.add(MainMenu)
+                    PoodlePanel.add(UserSettings)
+                    refresh()
                 }
             }
 

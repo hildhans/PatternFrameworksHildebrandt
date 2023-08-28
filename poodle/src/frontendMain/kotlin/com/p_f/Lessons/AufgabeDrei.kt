@@ -1,5 +1,6 @@
-package com.p_f
+package com.p_f.Lessons
 
+import com.p_f.DesktopWindow
 import io.kvision.core.FlexWrap
 import io.kvision.core.FontWeight
 
@@ -64,10 +65,11 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             }
             panel.add(dataContainer)
 
-                button(tr("Remove checked"), style = ButtonStyle.DANGER).onClick {
-                    dataState.value = dataState.value.copy(list = dataState.value.list.filter { !it.checked })
-                }
+            button(tr("Remove checked"), style = ButtonStyle.DANGER).onClick {
+                dataState.value = dataState.value.copy(list = dataState.value.list.filter { !it.checked })
             }
+        }
+
     companion object {
         fun run(container: Container) {
             container.add(AufgabeDrei())

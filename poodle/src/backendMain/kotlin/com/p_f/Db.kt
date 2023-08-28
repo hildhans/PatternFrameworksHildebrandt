@@ -6,10 +6,13 @@ import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.config.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.apache.commons.codec.digest.DigestUtils
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils.create
 import org.jetbrains.exposed.sql.Transaction
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.insert
+import org.joda.time.DateTime
 import java.math.BigDecimal
 import java.sql.*
 
@@ -22,6 +25,73 @@ object Db {
             create(UserDbo)
             create(TestDbo)
             create(UserTestDbo)
+            create(UserAddressDbo)
+
+            //insert der ersten Datensätze
+            UserDbo.insert {
+                it[name] = "Administrator"
+                it[username] = "admin"
+                it[password] = DigestUtils.sha256Hex("Admin_12345")
+            }
+            UserDbo.insert {
+                it[name] = "Test"
+                it[username] = "test"
+                it[password] = DigestUtils.sha256Hex("Test_12345")
+            }
+            UserDbo.insert {
+                it[name] = "Keiner"
+                it[username] = "keiner"
+                it[password] = DigestUtils.sha256Hex("Test_12345")
+            }
+            UserDbo.insert {
+                it[name] = "Buche"
+                it[username] = "buche"
+                it[password] = DigestUtils.sha256Hex("Test_12345")
+            }
+            UserAddressDbo.insert {
+                it[firstName] = "Chef"
+                it[lastName] = "Administrator"
+                it[userName] = "admin"
+                it[email] = ""
+                it[phone] = ""
+                it[postalAddress] = "?"
+                it[bio] = "BOFH"
+                it[createdAt] = DateTime().toDateTime()
+                it[userId] = 1
+            }
+            UserAddressDbo.insert {
+                it[firstName] = "Jochen"
+                it[lastName] = "Test"
+                it[userName] = "test"
+                it[email] = "jochen.test@mail.com"
+                it[phone] = "+4930123456"
+                it[postalAddress] = "Berlin"
+                it[bio] = "bio"
+                it[createdAt] = DateTime().toDateTime()
+                it[userId] = 2
+            }
+            UserAddressDbo.insert {
+                it[firstName] = "Karin"
+                it[lastName] = "Keiner"
+                it[userName] = "keiner"
+                it[email] = "kkeiner00@mail.de"
+                it[phone] = "015299889988"
+                it[postalAddress] = "Berlin"
+                it[bio] = "mmmhh"
+                it[createdAt] = DateTime().toDateTime()
+                it[userId] = 3
+            }
+            UserAddressDbo.insert {
+                it[firstName] = "Bertram"
+                it[lastName] = "Buche"
+                it[userName] = "buche"
+                it[email] = "bucheb@mail.net"
+                it[phone] = "040987654"
+                it[postalAddress] = "Hamburg"
+                it[bio] = "meer"
+                it[createdAt] = DateTime().toDateTime()
+                it[userId] = 4
+            }
         }
     }
 

@@ -26,7 +26,7 @@ fun Application.main() {
     install(DefaultHeaders)
     install(CallLogging)
     install(Sessions) {
-        cookie<User>("KTSESSION", storage = SessionStorageMemory()) {
+        cookie<User>("PFSESSION", storage = SessionStorageMemory()) {
             cookie.path = "/"
             cookie.extensions["SameSite"] = "strict"
         }
@@ -75,6 +75,7 @@ fun Application.main() {
                 call.sessions.clear<User>()
                 call.respondRedirect("/")
             }
+            applyRoutes(getServiceManager<IUserAddressService>())
             applyRoutes(getServiceManager<IUserService>())
         }
     }

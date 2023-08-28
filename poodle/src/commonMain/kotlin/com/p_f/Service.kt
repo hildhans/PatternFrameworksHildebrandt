@@ -5,7 +5,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 enum class Sort {
-    FN, LN, E, F
+    FN, LN, E
+}
+
+@Serializable
+enum class EditMode {
+    NEW,
+    EDIT
 }
 
 @KVService
@@ -14,12 +20,14 @@ interface IUserAddressService {
     suspend fun addUserAddress(address: Address): Address
     suspend fun updateUserAddress(address: Address): Address
     suspend fun deleteUserAddress(id: Int): Boolean
-    //suspend fun getUserAddress(id: Int): Address
 }
 
 @KVService
 interface IUserService {
     suspend fun getUser(): User
+    suspend fun getRegUser(username: String?, password: String): Boolean
+    suspend fun getAllUsers() :List<User>
+    suspend fun changeUser(user: User, password: String): User
 }
 
 @KVService

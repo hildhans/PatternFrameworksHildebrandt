@@ -30,8 +30,6 @@ fun Container.sideBar(value: String): Tag {
                 animation = false )
         }
 
-
-
         button(I18n.tr("Overview"), style = ButtonStyle.LIGHT) {
             width = 250.px
             marginTop = 50.px
@@ -43,8 +41,6 @@ fun Container.sideBar(value: String): Tag {
                     animation = false )
             }
         }
-
-
 
         button(I18n.tr("Lessons"), style = ButtonStyle.INFO) {
             width = 250.px
@@ -68,7 +64,6 @@ fun Container.sideBar(value: String): Tag {
                     animation = false )
             }
         }
-
     }
 }
 

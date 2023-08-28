@@ -17,7 +17,5 @@ fun Container.taskBackground(value: String): Tag {
 
         add(lessonsSlider(""))
         //add(aufgabenPool(""))
-
-
     }
 }

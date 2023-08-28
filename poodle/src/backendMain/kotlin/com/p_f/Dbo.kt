@@ -25,6 +25,7 @@ object UserAddressDbo : Table("address") {
     val id = integer("id").primaryKey().autoIncrement()
     val firstName = varchar("first_name", 255).nullable()
     val lastName = varchar("last_name", 255).nullable()
+    val userName = reference("username", UserDbo.username, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
     val email = varchar("email", 255).nullable()
     val phone = varchar("phone", 255).nullable()
     val postalAddress = varchar("postal_address", 255).nullable()
@@ -32,4 +33,6 @@ object UserAddressDbo : Table("address") {
     val userimage = varchar("image", 255).nullable()
     val createdAt = datetime("created_at").nullable()
     val userId = reference("user_id", UserDbo.id, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+    val parID = integer("par_id").nullable()
+   // val parID = reference("par_id", UserDbo.id, ReferenceOption.CASCADE, ReferenceOption.CASCADE).nullable()
 }

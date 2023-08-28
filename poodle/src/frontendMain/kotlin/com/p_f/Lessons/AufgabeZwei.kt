@@ -1,6 +1,7 @@
-package com.p_f
+package com.p_f.Lessons
 
 
+import com.p_f.DesktopWindow
 import io.kvision.core.Container
 import io.kvision.core.AlignItems
 import io.kvision.core.Border
@@ -11,7 +12,6 @@ import io.kvision.core.JustifyContent
 import io.kvision.html.Align
 import io.kvision.html.div
 import io.kvision.i18n.I18n.tr
-import io.kvision.panel.SimplePanel
 import io.kvision.panel.hPanel
 import io.kvision.panel.vPanel
 import io.kvision.state.bindEach

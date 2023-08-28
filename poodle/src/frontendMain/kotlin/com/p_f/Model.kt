@@ -15,8 +15,6 @@ object Model {
 
     val userAddress: ObservableList<Address> = observableListOf()
     val user = ObservableValue(User())
-    val firstUser = ObservableValue(User(0,"Test", "test", "Test_12345", "Test_12345")
-    )
 
     var search: String? = null
         set(value) {
@@ -72,6 +70,21 @@ object Model {
     suspend fun readUser() {
         Security.withAuth {
             user.value = userService.getUser()
+        }
+    }
+
+    suspend fun changeUser(user_: User, password: String) {
+        Security.withAuth {
+            user.value = userService.changeUser(user_, password)
+        }
+    }
+
+    suspend fun readRegUser(username: String?, pw: String): Boolean {
+        return try {
+            userService.getRegUser(username, pw)
+        } catch (e: Exception) {
+            console.log(e)
+            false
         }
     }
 

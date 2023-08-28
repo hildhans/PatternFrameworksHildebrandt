@@ -1,12 +1,14 @@
-package com.p_f
+package com.p_f.Lessons
 
+
+import com.p_f.DesktopWindow
 import io.kvision.core.Container
 import io.kvision.core.CssSize
 import io.kvision.core.UNIT
 import io.kvision.form.text.TextInput
 import io.kvision.utils.px
 
-class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
+class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
 
     override var height: CssSize?
         get() = super.height
@@ -35,7 +37,7 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
 
     companion object {
         fun run(container: Container) {
-            container.add(AufgabeFuenf())
+            container.add(AufgabeAcht())
         }
     }
 }

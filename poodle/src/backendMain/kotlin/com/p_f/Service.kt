@@ -6,7 +6,12 @@ import com.github.andrewoma.kwery.core.builder.query
 import io.ktor.server.application.*
 import io.ktor.server.sessions.*
 import org.apache.commons.codec.digest.DigestUtils
+import org.h2.command.dml.Update
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
+import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.statements.UpdateStatement
 import org.joda.time.DateTime
 import java.sql.ResultSet
 import java.time.ZoneId
@@ -26,27 +31,26 @@ actual class UserAddressService(private val call: ApplicationCall) : IUserAddres
                 val query = query {
                     select("SELECT * FROM address")
                     whereGroup {
-                        where("user_id = :user_id")
-                        parameter("user_id", user.id)
+                        if(user.id != 1){
+                            where("user_id = :userid OR par_id = :userid")
+                            //where("user_id = :userid")
+                            parameter("userid", user.id)
+                        }
                         search?.let {
                             where(
                                 """(lower(first_name) like :search
-                            OR lower(last_name) like :search
-                            OR lower(email) like :search
-                            OR lower(phone) like :search
-                            OR lower(postal_address) like :search)""".trimMargin()
+                                OR lower(last_name) like :search
+                                OR lower(email) like :search
+                                OR lower(phone) like :search
+                                OR lower(postal_address) like :search)""".trimMargin()
                             )
                             parameter("search", "%${it.lowercase()}%")
-                        }
-                        if (types == "fav") {
-                            where("favourite")
                         }
                     }
                     when (sort) {
                         Sort.FN -> orderBy("lower(first_name)")
                         Sort.LN -> orderBy("lower(last_name)")
                         Sort.E -> orderBy("lower(email)")
-                        Sort.F -> orderBy("favourite")
                     }
                 }
                 queryList(query.sql, query.parameters) {
@@ -56,17 +60,26 @@ actual class UserAddressService(private val call: ApplicationCall) : IUserAddres
         }
 
     override suspend fun addUserAddress(address: Address) = call.withUser { user ->
+        val keyU = dbQuery {
+            (UserDbo.insert {
+                it[name] = address.lastName!!
+                it[username] = address.userName!!
+                it[password] = DigestUtils.sha256Hex("Start_12345")
+            } get UserDbo.id)
+        }
         val key = dbQuery {
             (UserAddressDbo.insert {
                 it[firstName] = address.firstName
                 it[lastName] = address.lastName
+                it[userName] = address.userName!!
                 it[email] = address.email
                 it[phone] = address.phone
                 it[postalAddress] = address.postalAddress
                 it[bio] = address.bio
                 it[userimage] = address.userimage
                 it[createdAt] = DateTime()
-                it[userId] = address.id!!
+                it[userId] = keyU
+                it[parID] = user.id!!
 
             } get UserAddressDbo.id)
         }
@@ -86,7 +99,7 @@ actual class UserAddressService(private val call: ApplicationCall) : IUserAddres
                         it[bio] = address.bio
                         it[userimage] = address.userimage
                         it[createdAt] = oldUserAddress.createdAt
-                            ?.let { DateTime(java.util.Date.from(it.atZone(ZoneId.systemDefault()).toInstant())) }
+                            ?.let { DateTime().toDateTime() }
                         it[userId] = user.id!!
                     }
                 }
@@ -136,14 +149,45 @@ actual class UserAddressService(private val call: ApplicationCall) : IUserAddres
                 ?.atZone(ZoneId.systemDefault())?.toLocalDateTime(),
             userId = rs.getInt(UserAddressDbo.userId.name)
         )
-
 }
 
 @Suppress("ACTUAL_WITHOUT_EXPECT")
 actual class UserService(private val call: ApplicationCall) : IUserService {
 
+    override suspend fun getAllUsers() :List<User> = newSuspendedTransaction{
+        UserDbo.selectAll().map { toUsers(it) }
+    }
+
+    private fun toUsers(row:ResultRow) : User {
+        return User(
+            id = row[UserDbo.id],
+            name = row[UserDbo.name],
+            username = row[UserDbo.username],
+            password = row[UserDbo.password]
+        )
+    }
+
+    override suspend fun getRegUser(username: String?, password: String): Boolean {
+       val ret = dbQuery {
+            UserDbo.select {(UserDbo.username eq username!!) and (UserDbo.password eq password) }.count()
+        }
+        if(ret > 0) {
+            return true
+        }else {
+            return false
+        }
+    }
+
     override suspend fun getUser() = call.withUser { it }
 
+    override suspend fun changeUser(user: User, password: String)= call.withUser {
+        dbQuery {
+            UserDbo.update({UserDbo.id eq it.id!! }) {
+                it[this.password] = DigestUtils.sha256Hex(password)
+            }
+        }
+        getUser()
+    }
 }
 
 @Suppress("ACTUAL_WITHOUT_EXPECT")
@@ -151,11 +195,18 @@ actual class RegisterUserService : IRegisterUserService {
 
     override suspend fun registerUser(user: User, password: String): Boolean {
         try {
-            dbQuery {
+            val key = dbQuery {
                 UserDbo.insert {
                     it[this.name] = user.name!!
                     it[this.username] = user.username!!
                     it[this.password] = DigestUtils.sha256Hex(password)
+                } get UserDbo.id
+            }
+            dbQuery {
+                UserAddressDbo.insert {
+                    it[lastName] = user.name
+                    it[createdAt] = DateTime()
+                    it[userId] = key
                 }
             }
         } catch (e: Exception) {

@@ -93,7 +93,6 @@ kotlin {
                 implementation("io.ktor:ktor-server-auth:$ktorVersion")
                 implementation("io.ktor:ktor-server-compression:$ktorVersion")
                 implementation("io.ktor:ktor-server-default-headers:$ktorVersion")
-                implementation("io.ktor:ktor-server-compression:$ktorVersion")
                 implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
                 implementation("com.h2database:h2:$h2Version")
@@ -119,6 +118,7 @@ kotlin {
                 implementation("io.kvision:kvision-state:$kvisionVersion")
                 implementation("io.kvision:kvision-fontawesome:$kvisionVersion")
                 implementation("io.kvision:kvision-i18n:$kvisionVersion")
+                implementation("io.kvision:kvision-toastify:$kvisionVersion")
             }
             kotlin.srcDir("build/generated-src/frontend")
         }

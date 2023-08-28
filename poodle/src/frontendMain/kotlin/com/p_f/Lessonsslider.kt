@@ -1,20 +1,14 @@
 package com.p_f
 
 
+import com.p_f.Lessons.*
 import io.kvision.core.*
 import io.kvision.html.Tag
 import io.kvision.html.button
 import io.kvision.html.div
-import io.kvision.panel.HPanel
 import io.kvision.toolbar.buttonGroup
 import io.kvision.toolbar.toolbar
 import io.kvision.utils.perc
-
-object Lessonsslider : HPanel(wrap = FlexWrap.WRAP, spacing = 100 ) {
-    init{
-      /*  add(lessonsSlider(""))*/
-    }
-}
 
 fun Container.lessonsSlider(value: String): Tag {
     return div(value).apply {

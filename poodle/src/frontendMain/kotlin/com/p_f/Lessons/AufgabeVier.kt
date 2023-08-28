@@ -1,10 +1,10 @@
-package com.p_f
+package com.p_f.Lessons
 
 
+import com.p_f.DesktopWindow
 import io.kvision.core.*
 import io.kvision.form.check.CheckStyle
 import io.kvision.form.check.checkBox
-import io.kvision.form.text.TextInput
 import io.kvision.form.text.text
 import io.kvision.form.text.textInput
 import io.kvision.html.ButtonStyle

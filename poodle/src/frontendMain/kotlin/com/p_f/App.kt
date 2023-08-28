@@ -32,12 +32,10 @@ class App : Application() {
                 width = 100.perc
                 height = 100.vh
                 add(PoodlePanel)
-                //add(MainPoodlePanel)
             //}
         }
         AppScope.launch {
-            Model.registerUser(Model.firstUser.value, "Test_12345")
-            Model.readUser()
+            Model.getUserAddressList()
         }
     }
 }

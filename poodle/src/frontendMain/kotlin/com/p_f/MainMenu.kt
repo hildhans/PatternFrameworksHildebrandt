@@ -1,11 +1,9 @@
 package com.p_f
 
-import com.p_f.Model.user
 import io.kvision.core.*
 import io.kvision.html.*
 import io.kvision.i18n.I18n
 import io.kvision.panel.HPanel
-import io.kvision.panel.hPanel
 import io.kvision.state.bind
 import io.kvision.utils.auto
 import io.kvision.utils.px
