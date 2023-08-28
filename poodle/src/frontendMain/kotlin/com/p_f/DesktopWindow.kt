@@ -3,7 +3,6 @@ package com.p_f
 
 import io.kvision.core.CssSize
 import io.kvision.core.UNIT
-import io.kvision.core.Widget
 import io.kvision.utils.px
 import io.kvision.utils.vh
 import io.kvision.utils.vw
@@ -18,8 +17,8 @@ open class DesktopWindow(caption: String, icon: String, width: Int, height: Int)
         width.px,
         height.px,
         closeButton = true,
-        maximizeButton = true,
-        minimizeButton = true,
+        maximizeButton = false,
+        minimizeButton = false,
     ) {
 
     override var top: CssSize?
@@ -79,6 +78,4 @@ open class DesktopWindow(caption: String, icon: String, width: Int, height: Int)
             minimized = false
         }
     }
-
-
 }
