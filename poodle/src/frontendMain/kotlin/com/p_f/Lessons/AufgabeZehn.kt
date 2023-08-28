@@ -119,12 +119,12 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
     }
 
     init {
-        minWidth = 500.px
-        minHeight = 180.px
+        //minWidth = 500.px
+        //minHeight = 180.px
         padding = 3.px
-        richText.height = 370.px
-        add(richText)
-        height = 457.px
+        //richText.height = 370.px
+        //add(richText)
+        //height = 457.px
 
         this.marginTop = 10.px
         this.minHeight = 400.px
@@ -358,9 +358,12 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         }
 
         hPanel(justify = JustifyContent.CENTER, alignItems = AlignItems.FLEXSTART, useWrappers = true, spacing = 50) {
+            marginTop = 60.px
+            marginLeft = 60.px
             hPanel(spacing = 10) { //grünes Panel Ausgangspanel
                 // alignContent = AlignContent.CENTER
-                width = 290.px
+                width = 320.px
+                height = 80.px
                 padding = 10.px
                 border = Border(2.px, BorderStyle.SOLID, Color.name(Col.GREEN))
                 setDropTargetData("text/xml") { data ->
@@ -379,8 +382,8 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             }
 
             hPanel(spacing = 10) {//Zielpanel
-                width = 290.px
-                height = 50.px
+                width = 320.px
+                height = 80.px
                 padding = 10.px
                 border = Border(2.px, BorderStyle.SOLID, Color.name(Col.BLUE))
                 setDropTargetData("text/plain") { data ->
