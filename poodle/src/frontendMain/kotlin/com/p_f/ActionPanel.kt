@@ -22,6 +22,13 @@ object ActionPanel : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = A
                 width =  60.px// @ToDo nur UserAddresse
                 height = 60.px// @ToDo nur UserAddresse
                 onClick {
+
+                    MainPart.removeAll()
+                    refresh()
+                    MainPart.refresh()
+                    MainPart.add(sideBar(""))
+                    MainPart.add(taskBackground(""))
+                    refresh()
                     PoodlePanel.remove(UserSettings)
                     PoodlePanel.removeAll()
                     refresh()

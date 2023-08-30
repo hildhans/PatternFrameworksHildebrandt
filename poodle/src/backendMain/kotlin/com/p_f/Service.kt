@@ -29,7 +29,7 @@ actual class UserAddressService(private val call: ApplicationCall) : IUserAddres
                 val query = query {
                     select("SELECT * FROM address")
                     whereGroup {
-                        if(user.roleid != 1){
+                        if(user.id != 1){
                             where("""(user_id = :userid OR par_id = :userid)""")
                             //where("user_id = :userid")
                             parameter("userid", user.id)
@@ -63,7 +63,7 @@ actual class UserAddressService(private val call: ApplicationCall) : IUserAddres
                 it[name] = address.lastName!!
                 it[username] = address.userName!!
                 it[password] = DigestUtils.sha256Hex("Start_12345")
-                it[roleId] = 2
+                it[roleId] = 3
             } get UserDbo.id)
         }
         val key = dbQuery {

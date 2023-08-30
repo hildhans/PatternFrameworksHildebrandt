@@ -3,15 +3,14 @@ package com.p_f
 import io.kvision.core.*
 import io.kvision.html.*
 import io.kvision.i18n.I18n
-import io.kvision.modal.Alert
 import io.kvision.panel.FlexPanel
 import io.kvision.utils.px
 
 object MainPart : FlexPanel( FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER,
         spacing = 5 ) {
     init{
-        add(sideBar(""), order = 1)
-        add(taskBackground(""), order = 2)
+        add(sideBar(""))
+        add(taskBackground(""))
         /*add(lessonsSlider(""), order = 2)*/
 
     }
@@ -26,8 +25,12 @@ fun Container.sideBar(value: String): Tag {
         marginTop = 60.px
         marginLeft = 0.px
         onClick{
-            Alert.show( I18n.tr("Placeholder"),
-                animation = false )
+            MainPart.removeAll()
+            refresh()
+            MainPart.refresh()
+            MainPart.add(sideBar(""))
+            MainPart.add(taskBackground(""))
+            refresh()
         }
 
         button(I18n.tr("Overview"), style = ButtonStyle.LIGHT) {
@@ -37,8 +40,13 @@ fun Container.sideBar(value: String): Tag {
             fontFamily = "Arial"
             marginBottom = 50.px
             onClick{
-                Alert.show( I18n.tr("Placeholder"),
-                    animation = false )
+                MainPart.remove(taskBackground(""))
+                MainPart.removeAll()
+                refresh()
+                MainPart.refresh()
+                MainPart.add(sideBar(""))
+                MainPart.add(lessonsOverview(""))
+                refresh()
             }
         }
 
@@ -49,8 +57,13 @@ fun Container.sideBar(value: String): Tag {
             fontFamily = "Arial"
             marginBottom = 50.px
             onClick{
-                Alert.show( I18n.tr("Placeholder"),
-                    animation = false )
+                MainPart.remove(taskBackground(""))
+                MainPart.removeAll()
+                refresh()
+                MainPart.refresh()
+                MainPart.add(sideBar(""))
+                MainPart.add(lessonsSlider(""))
+                refresh()
             }
         }
 
@@ -60,8 +73,13 @@ fun Container.sideBar(value: String): Tag {
             fontSize = 15.px
             fontFamily = "Arial"
             onClick{
-                Alert.show( I18n.tr("Placeholder"),
-                    animation = false )
+                MainPart.remove(taskBackground(""))
+                MainPart.removeAll()
+                refresh()
+                MainPart.refresh()
+                MainPart.add(sideBar(""))
+                MainPart.add(configurationContainer(""))
+                refresh()
             }
         }
     }

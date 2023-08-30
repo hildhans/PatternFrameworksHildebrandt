@@ -29,7 +29,7 @@ object Db {
 
             //insert der ersten Datensätze
             UserRoleDbo.insert {
-                it[rolename] = "Administrator"
+                it[rolename] = "Admin"
                 it[description] = "Administrator"
             }
             UserRoleDbo.insert {

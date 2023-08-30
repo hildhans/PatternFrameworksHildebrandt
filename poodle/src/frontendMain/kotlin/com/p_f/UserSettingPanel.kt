@@ -20,6 +20,7 @@ import io.kvision.panel.StackPanel
 import io.kvision.state.bind
 import io.kvision.toast.*
 
+
 object UserSettingPanel : StackPanel() {
 
     private var editingId: Int? = null

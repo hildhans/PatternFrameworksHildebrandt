@@ -119,6 +119,11 @@ kotlin {
                 implementation("io.kvision:kvision-fontawesome:$kvisionVersion")
                 implementation("io.kvision:kvision-i18n:$kvisionVersion")
                 implementation("io.kvision:kvision-toastify:$kvisionVersion")
+                implementation("io.kvision:kvision-bootstrap-upload:$kvisionVersion")
+                implementation("io.kvision:kvision-tom-select:$kvisionVersion")
+                implementation("io.kvision:kvision-fontawesome:$kvisionVersion")
+                implementation("io.kvision:kvision-chart:$kvisionVersion")
+                implementation("io.kvision:kvision-rest:$kvisionVersion")
             }
             kotlin.srcDir("build/generated-src/frontend")
         }

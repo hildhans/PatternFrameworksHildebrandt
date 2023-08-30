@@ -22,7 +22,7 @@ object UserRoleDbo : Table("role") {
 
 object UserDbo : Table("user") {
     val id = integer("id").primaryKey().autoIncrement()
-    val roleId = reference("user_id", UserRoleDbo.id, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
+    val roleId = reference("role_id", UserRoleDbo.id, ReferenceOption.CASCADE, ReferenceOption.CASCADE)
     val name = varchar("name", 255)
     val username = varchar("username", 255).uniqueIndex()
     val password = varchar("password", 255)
