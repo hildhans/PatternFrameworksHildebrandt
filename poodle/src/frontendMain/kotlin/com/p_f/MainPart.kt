@@ -62,7 +62,7 @@ fun Container.sideBar(value: String): Tag {
                 refresh()
                 MainPart.refresh()
                 MainPart.add(sideBar(""))
-                MainPart.add(lessonsSlider(""))
+                MainPart.add(lessonsTab(""))
                 refresh()
             }
         }
