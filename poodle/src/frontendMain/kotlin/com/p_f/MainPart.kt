@@ -13,6 +13,7 @@ object MainPart : FlexPanel( FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FL
         add(taskBackground(""))
         /*add(lessonsSlider(""), order = 2)*/
 
+
     }
 }
 

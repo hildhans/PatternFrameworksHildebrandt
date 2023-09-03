@@ -7,6 +7,7 @@ plugins {
     kotlin("multiplatform") version kotlinVersion
     val kvisionVersion: String by System.getProperties()
     id("io.kvision") version kvisionVersion
+
 }
 
 version = "1.0.0"
@@ -29,6 +30,7 @@ val kweryVersion: String by project
 val logbackVersion: String by project
 val commonsCodecVersion: String by project
 val jdbcNamedParametersVersion: String by project
+val korauVersion = "4.0.2"
 
 val webDir = file("src/frontendMain/web")
 val mainClassName = "io.ktor.server.netty.EngineMain"
@@ -124,6 +126,10 @@ kotlin {
                 implementation("io.kvision:kvision-fontawesome:$kvisionVersion")
                 implementation("io.kvision:kvision-chart:$kvisionVersion")
                 implementation("io.kvision:kvision-rest:$kvisionVersion")
+                implementation("com.soywiz.korlibs.korau:korau:$korauVersion")
+                implementation ("commons-io:commons-io:2.11.0")
+                implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10")
+
             }
             kotlin.srcDir("build/generated-src/frontend")
         }
