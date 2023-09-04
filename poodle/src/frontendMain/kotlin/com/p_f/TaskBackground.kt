@@ -81,7 +81,7 @@ fun Container.taskBackground(value: String): Tag {
                         height = auto
                         //maxWidth = 500.px
                         width = 750.px
-                        height =450.px
+                        height =400.px
                         /*enablePopover(
                             PopoverOptions(
                                 title = I18n.tr("Click on Lessons in the menu to begin"),
