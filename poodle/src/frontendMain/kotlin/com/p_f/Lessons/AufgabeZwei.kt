@@ -72,7 +72,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             marginBottom = 20.px
                             fontSize = 15.px
                             fontFamily = "Arial"
-                            onClick {
+                            /*onClick {
                                 onClick {
                                     Alert.show(
                                         I18n.tr("Bild 1 von 3"),
@@ -80,7 +80,13 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                         animation = false
                                     )
                                 }
-                            }
+                            }*/
+                            enablePopover(
+                                PopoverOptions(
+                                    title = I18n.tr("Bild 1 von 3"),
+                                    content = "Folgendes Wort wird gesucht: schlafen"
+                                )
+                            )
                         }
 
                     }
@@ -116,6 +122,9 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                 val eingegebenerText=eingabe.value.toString()
                                 if (eingegebenerText=="to sleep")
                                     ausgabe.content = "richtig!"
+                                /*if (eingegebenerText=="sleep")
+                                    ausgabe.content = "noch nicht ganz!"*/
+
                                 else ausgabe.content = "falsch"
                             }
                         }
@@ -162,7 +171,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             marginBottom = 20.px
                             fontSize = 15.px
                             fontFamily = "Arial"
-                            onClick {
+                            /*onClick {
                                 onClick {
                                     Alert.show(
                                         I18n.tr("Bild 2 von 3"),
@@ -170,7 +179,13 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                         animation = false
                                     )
                                 }
-                            }
+                            }*/
+                            enablePopover(
+                                PopoverOptions(
+                                    title = I18n.tr("Bild 2 von 3"),
+                                    content = "Folgendes Wort wird gesucht: sehen"
+                                )
+                            )
                         }
 
                     }
@@ -206,6 +221,8 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                 val eingegebenerText=eingabe.value.toString()
                                 if (eingegebenerText=="to see")
                                     ausgabe.content = "richtig!"
+                                /*if (eingegebenerText=="see")
+                                    ausgabe.content = "noch nicht ganz!"*/
                                 else ausgabe.content = "falsch"
                             }
                         }
@@ -253,15 +270,22 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             marginBottom = 20.px
                             fontSize = 15.px
                             fontFamily = "Arial"
-                            onClick {
+                            /*onClick {
                                 onClick {
                                     Alert.show(
                                         I18n.tr("Bild 3 von 3"),
                                         "Folgendes Wort wird gesucht: hören",
                                         animation = false
                                     )
+
                                 }
-                            }
+                            }*/
+                            enablePopover(
+                                PopoverOptions(
+                                    title = I18n.tr("Bild 3 von 3"),
+                                    content = "Folgendes Wort wird gesucht: hören"
+                                )
+                            )
                         }
 
                     }
@@ -297,6 +321,8 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                 val eingegebenerText=eingabe.value.toString()
                                 if (eingegebenerText=="to hear")
                                     ausgabe.content = "richtig!"
+                                /*if (eingegebenerText=="hear")
+                                    ausgabe.content = "noch nicht ganz!"*/
                                 else ausgabe.content = "falsch"
                             }
                         }
