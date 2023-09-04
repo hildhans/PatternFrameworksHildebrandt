@@ -20,12 +20,31 @@ import io.kvision.utils.px
 
 class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
 
-    init {
-       addHPanel_1()
-
-
+     init {
+        addHPanel_1()
+        div{
+            marginLeft = 400.px
+            marginBottom = 100.px
+            marginTop = 100.px
+        button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.LIGHT) {
+            alignContent = AlignContent.CENTER
+            margin = 2.px
+            width = 200.px
+            height = 50.px
+            marginTop = 20.px
+            fontSize = 15.px
+            fontFamily = "Arial"
+            background = Background(Color.name(Col.ROSYBROWN))
+            onClick {
+                Alert.show(
+                    I18n.tr("Aufgabenstellung: Lektion 2, Lesson 1"),
+                    "Bitte klicken Sie auf die Bilder, um zu sehen, welche Verben auf Englisch übersetzt werden sollen!",
+                    animation = false
+                )
+            }
         }
-
+    }
+    }
 
     fun Container.addHPanel_1(){
         hPanel {
