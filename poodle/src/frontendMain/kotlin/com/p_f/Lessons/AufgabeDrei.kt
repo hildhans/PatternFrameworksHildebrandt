@@ -22,7 +22,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
     init {
         this.marginTop = 10.px
         this.minHeight = 400.px
-        background = Background(Color.name(Col.MISTYROSE))
+        background = Background(Color.name(Col.IVORY))
 
         val panel = hPanel(spacing = 10, useWrappers = true)
 

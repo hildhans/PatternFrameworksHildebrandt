@@ -44,7 +44,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
             width = size.px
             height = size.px
             width = size.px
-            background = Background(Color.name(Col.MISTYROSE))
+            background = Background(Color.name(Col.IVORY))
 
 
             flexPanel(FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER,
@@ -201,7 +201,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             fontSize = 15.px
                             fontFamily = "Arial"
                             align = Align.CENTER
-                            background = Background(Color.name(Col.PEACHPUFF))
+                            background = Background(Color.name(Col.ROSYBROWN))
                             onClick {
                                 val eingegebenerText=eingabe.value.toString()
                                 if (eingegebenerText=="to see")
@@ -225,7 +225,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
             width = size.px
             height = size.px
             width = size.px
-            background = Background(Color.name(Col.MISTYROSE))
+            background = Background(Color.name(Col.IVORY))
 
 
             flexPanel(FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER,
@@ -292,7 +292,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             fontSize = 15.px
                             fontFamily = "Arial"
                             align = Align.CENTER
-                            background = Background(Color.name(Col.LIGHTGREEN))
+                            background = Background(Color.name(Col.PEACHPUFF))
                             onClick {
                                 val eingegebenerText=eingabe.value.toString()
                                 if (eingegebenerText=="to hear")

@@ -26,7 +26,11 @@ import io.kvision.state.bindEach
 import io.kvision.state.observableListOf
 
 class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800) {
-
+    init {
+        this.marginTop = 10.px
+        this.minHeight = 400.px
+        background = Background(Color.name(Col.IVORY))
+    }
     override var height: CssSize?
         get() = super.height
         set(value) {
@@ -319,39 +323,43 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         div(rich = true) { //Translation Button
             marginTop = 60.px
             marginLeft = 370.px
-            button(I18n.tr("Translation"), style = ButtonStyle.SECONDARY).onClick {
+            button(I18n.tr("Translation"), style = ButtonStyle.OUTLINEDARK) {
+                background = Background(Color.name(Col.MISTYROSE))
 
-                if (checkTransl()) { // nur wenn richtig beantwortet und wenn die Liste leer ist
-                    //die leere Liste dient als Kontrolle, ob der User schon geprüft hat, dass richtig geantwortet wurde
-                    clearListTarget()
-                    newVocab() //aktualisiert die angezeigte Vokabel, und erhöht counter
-                    // aktualisiert die Liste mit Buchstaben je nach Vokabel
-                    if (counter == 0) updateListHello()
-                    if (counter == 1) updateListCar()
-                    if (counter == 2) updateListGoodbye()
-                    if (counter == 3) updateListBottle()
-                    if (counter == 4) updateListBag()
-                }
-                /*if (counter==0) {
+                onClick {
+
+                    if (checkTransl()) { // nur wenn richtig beantwortet und wenn die Liste leer ist
+                        //die leere Liste dient als Kontrolle, ob der User schon geprüft hat, dass richtig geantwortet wurde
+                        clearListTarget()
+                        newVocab() //aktualisiert die angezeigte Vokabel, und erhöht counter
+                        // aktualisiert die Liste mit Buchstaben je nach Vokabel
+                        if (counter == 0) updateListHello()
+                        if (counter == 1) updateListCar()
+                        if (counter == 2) updateListGoodbye()
+                        if (counter == 3) updateListBottle()
+                        if (counter == 4) updateListBag()
+                    }
+                    /*if (counter==0) {
                     clearListTarget()
                     newVocab()
                     updateListHello()
                 }*/
-                if (!checkTransl() && counter != 0) {
-                    //newVocab()
-                    showVocab()
-                }
-                //Startposition checkTransl falsch und string = ""
-                if (!checkTransl() && !listTarget.isEmpty() && counter != 0) {
-                    //clearListTarget()
-                    showVocab()
+                    if (!checkTransl() && counter != 0) {
+                        //newVocab()
+                        showVocab()
+                    }
+                    //Startposition checkTransl falsch und string = ""
+                    if (!checkTransl() && !listTarget.isEmpty() && counter != 0) {
+                        //clearListTarget()
+                        showVocab()
 
-                }
-                if (!checkTransl() && counter == 0) {
-                    //newVocab()
-                    clearListTarget()
-                    showVocab()
-                    updateListHello()
+                    }
+                    if (!checkTransl() && counter == 0) {
+                        //newVocab()
+                        clearListTarget()
+                        showVocab()
+                        updateListHello()
+                    }
                 }
             }
 
@@ -362,10 +370,10 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             marginLeft = 60.px
             hPanel(spacing = 10) { //grünes Panel Ausgangspanel
                 // alignContent = AlignContent.CENTER
-                width = 320.px
-                height = 80.px
+                width = 325.px
+                height = 60.px
                 padding = 10.px
-                border = Border(2.px, BorderStyle.SOLID, Color.name(Col.GREEN))
+                border = Border(2.px, BorderStyle.SOLID, Color.name(Col.ROSYBROWN))
                 setDropTargetData("text/xml") { data ->
                     if (data != null) {
                         listTarget.remove(data)
@@ -382,10 +390,10 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
             }
 
             hPanel(spacing = 10) {//Zielpanel
-                width = 320.px
-                height = 80.px
+                width = 325.px
+                height = 60.px
                 padding = 10.px
-                border = Border(2.px, BorderStyle.SOLID, Color.name(Col.BLUE))
+                border = Border(2.px, BorderStyle.SOLID, Color.name(Col.ROSYBROWN))
                 setDropTargetData("text/plain") { data ->
                     if (data != null) {
                         list.remove(data)
