@@ -16,7 +16,7 @@ import io.kvision.utils.px
 fun Container.lessonsTab(value: String): Tag {
     return div(value).apply {
         justifyContent = JustifyContent.CENTER
-        background = Background(Color.name(Col.LIGHTGRAY))
+        background = Background(Color.name(Col.MISTYROSE))
         marginTop = 60.px
         width = 900.px
         height = 600.px

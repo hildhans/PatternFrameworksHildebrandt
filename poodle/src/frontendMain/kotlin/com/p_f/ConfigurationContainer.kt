@@ -23,7 +23,7 @@ data class Form(
 fun Container.configurationContainer(value: String): Tag {
     return div(value).apply {
         justifyContent = JustifyContent.CENTER
-        background = Background(Color.name(Col.LIGHTGRAY))
+        background = Background(Color.name(Col.MISTYROSE))
         marginTop = 60.px
         width = 900.px
         height = 600.px
@@ -32,7 +32,7 @@ fun Container.configurationContainer(value: String): Tag {
         div(value).apply {
             marginTop = 10.perc
             justifyContent = JustifyContent.CENTER
-            background = Background(Color.name(Col.LIGHTGRAY))
+            background = Background(Color.name(Col.MISTYROSE))
             val restClient = RestClient()
             this.marginTop = 10.px
             val formPanel = formPanel<Form> {

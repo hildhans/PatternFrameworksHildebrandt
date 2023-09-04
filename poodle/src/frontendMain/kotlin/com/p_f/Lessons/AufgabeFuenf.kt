@@ -87,7 +87,7 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
     init {
         this.marginTop = 20.px
         this.minHeight = 600.px
-        background = Background(Color.name(Col.LIGHTGRAY))
+        background = Background(Color.name(Col.MISTYROSE))
         vPanel(justify = JustifyContent.SPACEAROUND, alignItems = AlignItems.CENTER, spacing = 50) {
             button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.LIGHT) {
                 alignContent = AlignContent.CENTER

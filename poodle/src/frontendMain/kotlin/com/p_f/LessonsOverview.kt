@@ -23,7 +23,7 @@ import kotlin.random.Random
 fun Container.lessonsOverview(value: String): Tag {
     return div(value).apply {
         justifyContent = JustifyContent.CENTER
-        background = Background(Color.name(Col.LIGHTGRAY))
+        background = Background(Color.name(Col.MISTYROSE))
         marginTop = 60.px
         width = 900.px
         height = 600.px
@@ -31,7 +31,7 @@ fun Container.lessonsOverview(value: String): Tag {
         div(value).apply {
             marginTop = 10.perc
             justifyContent = JustifyContent.CENTER
-            background = Background(Color.name(Col.LIGHTGRAY))
+            background = Background(Color.name(Col.MISTYROSE))
             this.marginTop = 10.px
 
             chart(

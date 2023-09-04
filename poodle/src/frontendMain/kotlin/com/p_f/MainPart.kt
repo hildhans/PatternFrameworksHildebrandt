@@ -19,7 +19,7 @@ object MainPart : FlexPanel( FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FL
 fun Container.sideBar(value: String): Tag {
     return div(value).apply {
         align = Align.CENTER
-        background = Background(Color.name(Col.LIGHTGREEN))
+        background = Background(Color.name(Col.PEACHPUFF))
         width = 300.px
         height = 600.px
         marginTop = 60.px
@@ -33,6 +33,24 @@ fun Container.sideBar(value: String): Tag {
             refresh()
         }
 
+
+        button(I18n.tr("Lessons"), style = ButtonStyle.OUTLINEDARK) {
+            width = 250.px
+            marginTop = 20.px
+            fontSize = 15.px
+            fontFamily = "Arial"
+            marginBottom = 50.px
+            background = Background(Color.name(Col.MISTYROSE))
+            onClick{
+                MainPart.remove(taskBackground(""))
+                MainPart.removeAll()
+                refresh()
+                MainPart.refresh()
+                MainPart.add(sideBar(""))
+                MainPart.add(lessonsTab(""))
+                refresh()
+            }
+        }
         button(I18n.tr("Overview"), style = ButtonStyle.LIGHT) {
             width = 250.px
             marginTop = 50.px
@@ -46,23 +64,6 @@ fun Container.sideBar(value: String): Tag {
                 MainPart.refresh()
                 MainPart.add(sideBar(""))
                 MainPart.add(lessonsOverview(""))
-                refresh()
-            }
-        }
-
-        button(I18n.tr("Lessons"), style = ButtonStyle.INFO) {
-            width = 250.px
-            marginTop = 20.px
-            fontSize = 15.px
-            fontFamily = "Arial"
-            marginBottom = 50.px
-            onClick{
-                MainPart.remove(taskBackground(""))
-                MainPart.removeAll()
-                refresh()
-                MainPart.refresh()
-                MainPart.add(sideBar(""))
-                MainPart.add(lessonsTab(""))
                 refresh()
             }
         }

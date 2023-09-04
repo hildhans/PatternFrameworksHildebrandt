@@ -22,7 +22,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
     init {
         this.marginTop = 10.px
         this.minHeight = 400.px
-        background = Background(Color.name(Col.LIGHTGRAY))
+        background = Background(Color.name(Col.MISTYROSE))
 
         val panel = hPanel(spacing = 10, useWrappers = true)
 
@@ -397,7 +397,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState1.value = dataState1.value.copy(list = dataState1.value.list.filter { !it.hallo })
             }
@@ -412,7 +412,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState2.value = dataState2.value.copy(list = dataState2.value.list.filter { !it.tschuess})
             }
@@ -423,7 +423,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState3.value = dataState3.value.copy(list = dataState3.value.list.filter { !it.gehen})
             }
@@ -434,7 +434,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState4.value = dataState4.value.copy(list = dataState4.value.list.filter { !it.sitzen})
             }
@@ -445,7 +445,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState5.value = dataState5.value.copy(list = dataState5.value.list.filter { !it.maedchen})
             }
@@ -456,7 +456,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState6.value = dataState6.value.copy(list = dataState6.value.list.filter { !it.junge})
             }
@@ -467,7 +467,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState7.value = dataState7.value.copy(list = dataState7.value.list.filter { !it.tisch})
             }
@@ -478,7 +478,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState8.value = dataState8.value.copy(list = dataState8.value.list.filter { !it.stuhl})
             }
@@ -489,7 +489,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState9.value = dataState9.value.copy(list = dataState9.value.list.filter { !it.gutenacht})
             }
@@ -500,7 +500,7 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.PEACHPUFF))
             onClick {
                 dataState10.value = dataState10.value.copy(list = dataState10.value.list.filter { !it.gutenmorgen})
             }

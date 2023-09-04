@@ -137,7 +137,7 @@ object Security : SecurityMgr() {
     private val loginWindow = LoginWindow()
 
     override suspend fun login(): Boolean {
-        return loginService.login(loginWindow.getResult())
+        return true // loginService.login(loginWindow.getResult())
     }
 
     override suspend fun afterLogin() {

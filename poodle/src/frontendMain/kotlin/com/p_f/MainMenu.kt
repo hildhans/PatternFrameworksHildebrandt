@@ -20,8 +20,12 @@ object MainMenu : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = Alig
                 BegruessungsDiv("${user.name}", 150)
             }
         }
+        logoPoodle("", 150)
         LektionShowDiv("", 200)
-        FlaggeDiv("", 150)
+
+        //BegruessungsDiv("", 150)
+        //welcomeScreen("", 150)
+
         ProfilBildDiv("", 150)
         add(ActionPanel)
     }
@@ -29,7 +33,7 @@ object MainMenu : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = Alig
 
 fun Container.LogoDiv(value: String, size: Int) {
     div{
-        image(io.kvision.require("img/logoPoodle.png")) {
+        image(io.kvision.require("img/poodleLogo.png")) {
             alignContent = AlignContent.CENTER
             width =  auto
             height = auto
@@ -47,7 +51,7 @@ fun Container.LektionShowDiv(value: String, size: Int) {
         //height = size.px
         span(I18n.tr("Lesson 1")){
             fontFamily = "Arial"
-            fontSize = 20.px
+            fontSize = 25.px
             fontWeight = FontWeight.BOLDER
             fontVariant = FontVariant.SMALLCAPS
         }
@@ -60,25 +64,35 @@ fun Container.BegruessungsDiv(value: String, size: Int) {
         align = Align.CENTER
         //width = 400.px
         //height = 50.px
-        span(I18n.tr("Hello " + value)) {
+        span(I18n.tr("Hello" + "")) {
             fontFamily = "Arial"
             fontSize = 22.px
             fontStyle = FontStyle.OBLIQUE
             fontWeight = FontWeight.BOLDER
-            fontVariant = FontVariant.SMALLCAPS
+            //fontVariant = FontVariant.SMALLCAPS
         }
     }
-    div{
+   /* div{
         span(I18n.tr("You're doing great. Keep it up!")){
             fontFamily = "Verdana"
             fontSize = 14.px
         }
-    }
+    }*/
 }
 
-fun Container.FlaggeDiv(value: String, size: Int) {
+/*fun Container.welcomeScreen(value: String, size: Int) {
     div{
-        image(io.kvision.require("img/GB.png")) {
+        image(io.kvision.require("img/welcomeImage.png")) {
+            marginTop = 40.px
+            alignContent = AlignContent.CENTER
+            width = auto
+            height = 100.px
+        }
+    }
+}*/
+fun Container.logoPoodle(value: String, size: Int) {
+    div{
+        image(io.kvision.require("img/poodleLogo.png")) {
             marginTop = 40.px
             alignContent = AlignContent.CENTER
             width = auto
@@ -94,7 +108,7 @@ fun Container.ProfilBildDiv(value: String, size: Int) {
             marginLeft = 40.px
             alignContent = AlignContent.CENTER
             width = auto
-            height = 100.px
+            height = 75.px
         }
     }
 }
