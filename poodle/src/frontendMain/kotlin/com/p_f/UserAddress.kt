@@ -27,7 +27,7 @@ object UserAddress : SimplePanel() {
 
         hPanel(alignItems = AlignItems.CENTER, spacing = 20) {
             text(InputType.SEARCH) {
-                placeholder = "${I18n.tr("Search")} ..."
+                placeholder = "${I18n.tr("Suche")} ..."
                 setEventListener<TextInput> {
                     input = {
                         Model.search = self.value
@@ -37,8 +37,8 @@ object UserAddress : SimplePanel() {
         }
 
         table(types = setOf(TableType.STRIPED, TableType.HOVER)) {
-            addHeaderCell(this@UserAddress.sortingHeaderCell(I18n.tr("First name"), Sort.FN))
-            addHeaderCell(this@UserAddress.sortingHeaderCell(I18n.tr("Last name"), Sort.LN))
+            addHeaderCell(this@UserAddress.sortingHeaderCell(I18n.tr("Vorname"), Sort.FN))
+            addHeaderCell(this@UserAddress.sortingHeaderCell(I18n.tr("Nachname"), Sort.LN))
             addHeaderCell(this@UserAddress.sortingHeaderCell(I18n.tr("E-mail"), Sort.E))
             addHeaderCell(HeaderCell(""))
             bind(Model.userAddress) { addresses ->
@@ -58,11 +58,11 @@ object UserAddress : SimplePanel() {
                         cell(address.bio)
                         cell {
                             icon("fas fa-times") {
-                                title = I18n.tr("Delete")
+                                title = I18n.tr("Löschen")
                                 onEvent {
                                     click = { e ->
                                         e.stopPropagation()
-                                        Confirm.show("Are you sure?", "Do you want to delete this address?") {
+                                        Confirm.show("Bist Du Dir sicher??", "Möchtest Du wirklich diese Anschrift und Benutzer löschen?") {
                                             UserSettingPanel.delete(index)
                                         }
                                     }
@@ -71,7 +71,7 @@ object UserAddress : SimplePanel() {
                         }
                         cell {
                             icon("fas fa-gear") {
-                                title = I18n.tr("Edit")
+                                title = I18n.tr("Bearbeiten")
                                 onEvent {
                                     click = { e ->
                                         UserSettingPanel.edit(index)

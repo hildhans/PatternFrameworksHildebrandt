@@ -11,8 +11,6 @@ object MainPart : FlexPanel( FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FL
     init{
         add(sideBar(""))
         add(taskBackground(""))
-        /*add(lessonsSlider(""), order = 2)*/
-
     }
 }
 
@@ -32,11 +30,9 @@ fun Container.sideBar(value: String): Tag {
             MainPart.add(taskBackground(""))
             refresh()
         }
-
-
         button(I18n.tr("Lessons"), style = ButtonStyle.OUTLINEDARK) {
             width = 250.px
-            marginTop = 20.px
+            marginTop = 50.px
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
@@ -53,7 +49,7 @@ fun Container.sideBar(value: String): Tag {
         }
         button(I18n.tr("Overview"), style = ButtonStyle.LIGHT) {
             width = 250.px
-            marginTop = 50.px
+            marginTop = 20.px
             fontSize = 15.px
             fontFamily = "Arial"
             marginBottom = 50.px
@@ -67,7 +63,6 @@ fun Container.sideBar(value: String): Tag {
                 refresh()
             }
         }
-
         button(I18n.tr("Configuration"), style = ButtonStyle.LIGHT) {
             width = 250.px
             marginTop = 20.px

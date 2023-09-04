@@ -44,7 +44,7 @@ object ActionPanel : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = A
                 width =  60.px// @ToDo
                 height = 60.px// @ToDo
                 onClick {
-                    Alert.show( I18n.tr("Placeholder"),
+                    Alert.show( I18n.tr(" Du hast keine neuen Benachrichtigungen! "),
                         animation = false )
                 }
             }

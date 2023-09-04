@@ -33,7 +33,7 @@ object MainMenu : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = Alig
 
 fun Container.LogoDiv(value: String, size: Int) {
     div{
-        image(io.kvision.require("img/poodleLogo.png")) {
+        image(io.kvision.require("img/logoPoodle.png")) {
             alignContent = AlignContent.CENTER
             width =  auto
             height = auto
@@ -64,7 +64,7 @@ fun Container.BegruessungsDiv(value: String, size: Int) {
         align = Align.CENTER
         //width = 400.px
         //height = 50.px
-        span(I18n.tr("Hello" + "")) {
+        span(I18n.tr("Hello " + value)) {
             fontFamily = "Arial"
             fontSize = 22.px
             fontStyle = FontStyle.OBLIQUE
@@ -72,27 +72,11 @@ fun Container.BegruessungsDiv(value: String, size: Int) {
             //fontVariant = FontVariant.SMALLCAPS
         }
     }
-   /* div{
-        span(I18n.tr("You're doing great. Keep it up!")){
-            fontFamily = "Verdana"
-            fontSize = 14.px
-        }
-    }*/
 }
 
-/*fun Container.welcomeScreen(value: String, size: Int) {
-    div{
-        image(io.kvision.require("img/welcomeImage.png")) {
-            marginTop = 40.px
-            alignContent = AlignContent.CENTER
-            width = auto
-            height = 100.px
-        }
-    }
-}*/
 fun Container.logoPoodle(value: String, size: Int) {
     div{
-        image(io.kvision.require("img/poodleLogo.png")) {
+        image(io.kvision.require("img/logoPoodle.png")) {
             marginTop = 40.px
             alignContent = AlignContent.CENTER
             width = auto

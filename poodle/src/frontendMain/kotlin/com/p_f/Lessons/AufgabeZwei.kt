@@ -22,10 +22,30 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
 
     init {
         addHPanel_1()
-
-
+        div{
+            marginLeft = 400.px
+            marginBottom = 100.px
+            marginTop = 100.px
+            button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.OUTLINEDARK) {
+                background = Background(Color.name(Col.MISTYROSE))
+                alignContent = AlignContent.CENTER
+                margin = 2.px
+                width = 200.px
+                height = 50.px
+                marginTop = 20.px
+                fontSize = 15.px
+                fontFamily = "Arial"
+                //background = Background(Color.name(Col.ROSYBROWN))
+                onClick {
+                    Alert.show(
+                        I18n.tr("Aufgabenstellung: Lektion 2, Lesson 1"),
+                        "Bitte klicken Sie auf die Bilder, um zu sehen, welche Verben auf Englisch übersetzt werden sollen!",
+                        animation = false
+                    )
+                }
+            }
+        }
     }
-
 
     fun Container.addHPanel_1(){
         hPanel {
@@ -35,9 +55,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
         }
     }
 
-
-
-
     fun Container.Bild1(value: String, size: Int): Tag {
         return div(value).apply {
             //paddingTop = ((size / 2) - 10).px
@@ -46,9 +63,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
             width = size.px
             background = Background(Color.name(Col.IVORY))
 
-
-            flexPanel(FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER,
-                spacing = 5){
+            flexPanel(FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER, spacing = 5){
 
                 val textausgabeSpan = span("").apply {
                     align = Align.CENTER
@@ -72,15 +87,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             marginBottom = 20.px
                             fontSize = 15.px
                             fontFamily = "Arial"
-                            /*onClick {
-                                onClick {
-                                    Alert.show(
-                                        I18n.tr("Bild 1 von 3"),
-                                        "Folgendes Wort wird gesucht: schlafen",
-                                        animation = false
-                                    )
-                                }
-                            }*/
                             enablePopover(
                                 PopoverOptions(
                                     title = I18n.tr("Bild 1 von 3"),
@@ -88,7 +94,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                 )
                             )
                         }
-
                     }
                 }
 
@@ -109,7 +114,8 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             placeholder = "Hier das englische Verb eingeben..."
                             background = Background(Color.name(Col.WHITE))
                         }
-                        button("Bestätigen", style = ButtonStyle.LIGHT) {
+                        button("Bestätigen", style = ButtonStyle.OUTLINEDARK) {
+                            background = Background(Color.name(Col.MISTYROSE))
                             width = 200.px
                             height = 50.px
                             marginTop = 20.px
@@ -117,18 +123,16 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             fontSize = 15.px
                             fontFamily = "Arial"
                             align = Align.CENTER
-                            background = Background(Color.name(Col.PEACHPUFF))
+                            ///background = Background(Color.name(Col.PEACHPUFF))
                             onClick {
                                 val eingegebenerText=eingabe.value.toString()
                                 if (eingegebenerText=="to sleep")
                                     ausgabe.content = "richtig!"
                                 /*if (eingegebenerText=="sleep")
                                     ausgabe.content = "noch nicht ganz!"*/
-
                                 else ausgabe.content = "falsch"
                             }
                         }
-
                     }
                 }
                 add(sprachewiedergeben(textausgabeSpan))
@@ -145,9 +149,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
             width = size.px
             background = Background(Color.name(Col.MISTYROSE))
 
-
-            flexPanel(FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER,
-                spacing = 5){
+            flexPanel(FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER, spacing = 5){
 
                 val textausgabeSpan = span("").apply {
                     align = Align.CENTER
@@ -171,15 +173,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             marginBottom = 20.px
                             fontSize = 15.px
                             fontFamily = "Arial"
-                            /*onClick {
-                                onClick {
-                                    Alert.show(
-                                        I18n.tr("Bild 2 von 3"),
-                                        "Folgendes Wort wird gesucht: sehen",
-                                        animation = false
-                                    )
-                                }
-                            }*/
                             enablePopover(
                                 PopoverOptions(
                                     title = I18n.tr("Bild 2 von 3"),
@@ -187,7 +180,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                 )
                             )
                         }
-
                     }
                 }
 
@@ -208,7 +200,8 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             placeholder = "Hier das englische Verb eingeben..."
                             background = Background(Color.name(Col.WHITE))
                         }
-                        button("Bestätigen", style = ButtonStyle.LIGHT) {
+                        button("Bestätigen", style = ButtonStyle.OUTLINEDARK) {
+                            background = Background(Color.name(Col.MISTYROSE))
                             width = 200.px
                             height = 50.px
                             marginTop = 20.px
@@ -216,7 +209,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             fontSize = 15.px
                             fontFamily = "Arial"
                             align = Align.CENTER
-                            background = Background(Color.name(Col.ROSYBROWN))
+                            //background = Background(Color.name(Col.ROSYBROWN))
                             onClick {
                                 val eingegebenerText=eingabe.value.toString()
                                 if (eingegebenerText=="to see")
@@ -226,7 +219,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                 else ausgabe.content = "falsch"
                             }
                         }
-
                     }
                 }
                 add(sprachewiedergeben(textausgabeSpan))
@@ -234,7 +226,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
             }
         }
     }
-
 
     fun Container.Bild3(value: String, size: Int): Tag {
         return div(value).apply {
@@ -244,9 +235,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
             width = size.px
             background = Background(Color.name(Col.IVORY))
 
-
-            flexPanel(FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER,
-                spacing = 5){
+            flexPanel(FlexDirection.ROW, FlexWrap.WRAP, JustifyContent.FLEXSTART, AlignItems.CENTER, spacing = 5){
 
                 val textausgabeSpan = span("").apply {
                     align = Align.CENTER
@@ -270,16 +259,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             marginBottom = 20.px
                             fontSize = 15.px
                             fontFamily = "Arial"
-                            /*onClick {
-                                onClick {
-                                    Alert.show(
-                                        I18n.tr("Bild 3 von 3"),
-                                        "Folgendes Wort wird gesucht: hören",
-                                        animation = false
-                                    )
-
-                                }
-                            }*/
                             enablePopover(
                                 PopoverOptions(
                                     title = I18n.tr("Bild 3 von 3"),
@@ -287,7 +266,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                 )
                             )
                         }
-
                     }
                 }
 
@@ -308,7 +286,8 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             placeholder = "Hier das englische Verb eingeben..."
                             background = Background(Color.name(Col.WHITE))
                         }
-                        button("Bestätigen", style = ButtonStyle.LIGHT) {
+                        button("Bestätigen", style = ButtonStyle.OUTLINEDARK) {
+                            background = Background(Color.name(Col.MISTYROSE))
                             width = 200.px
                             height = 50.px
                             marginTop = 20.px
@@ -316,7 +295,7 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                             fontSize = 15.px
                             fontFamily = "Arial"
                             align = Align.CENTER
-                            background = Background(Color.name(Col.PEACHPUFF))
+                            //background = Background(Color.name(Col.PEACHPUFF))
                             onClick {
                                 val eingegebenerText=eingabe.value.toString()
                                 if (eingegebenerText=="to hear")
@@ -326,7 +305,6 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                                 else ausgabe.content = "falsch"
                             }
                         }
-
                     }
                 }
                 add(sprachewiedergeben(textausgabeSpan))

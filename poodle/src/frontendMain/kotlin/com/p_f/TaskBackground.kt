@@ -37,57 +37,26 @@ fun Container.taskBackground(value: String): Tag {
                 align = Align.CENTER
                 maxWidth = 510.px
                 justifyContent = JustifyContent.CENTER
-                //background = Background(Color.hex("#F2F2F2", 0.75))
-               background = Background(Color.name(Col.MISTYROSE))
-
+                background = Background(Color.name(Col.MISTYROSE))
 
                 this.marginTop = 10.px
 
                 vPanel(spacing = 3, useWrappers = true, justify = JustifyContent.CENTER) {
                     maxWidth = 500.px
                     div() {
-                        //fontFamily = "Bogart"
                         fontFamily = "ABeeZee"
                         fontWeight = FontWeight.BOLDER
                         width = 500.px
                         height =50.px
-                        /*span {
-                            align = Align.CENTER
-                            +I18n.tr("Welcome!")
-                        }*/
-                    }
-                    div() {
-                        /*span {
-                            fontFamily = "Arial"
-                            fontSize = 32.px
-                            fontStyle = FontStyle.OBLIQUE
-                            fontWeight = FontWeight.BOLDER
-                            fontVariant = FontVariant.SMALLCAPS
-                            align = Align.CENTER
-                            width = 500.px
-                            height =80.px
-                            textDecoration =
-                                TextDecoration(
-                                    TextDecorationLine.UNDERLINE,
-                                    TextDecorationStyle.DOTTED,
-                                    Color.name(Col.RED)
-                                )
-                            +I18n.tr("Willkommen bei Poodle")
-                        }*/
                     }
                     image(require("img/welcomeImage.png"), centered = true) {
                        alignContent = AlignContent.CENTER
                         width =  auto
                         height = auto
                         //maxWidth = 500.px
-                        width = 750.px
-                        height =400.px
-                        /*enablePopover(
-                            PopoverOptions(
-                                title = I18n.tr("Click on Lessons in the menu to begin"),
-                               // content = "UK."
-                            )
-                        )   */
+                        width = 550.px
+                        height =300.px
+
                         onClick{
                                 MainPart.remove(taskBackground(""))
                                 MainPart.removeAll()
@@ -104,25 +73,9 @@ fun Container.taskBackground(value: String): Tag {
                             }
 
                     }
-                    /*image(require("img/GB2.jpg"), centered = true) {
-                        alignContent = AlignContent.CENTER
-                        width =  auto
-                        height = auto
-                        maxWidth = 500.px
-                        width = 500.px
-                        height =170.px
-                        enablePopover(
-                            PopoverOptions(
-                                title = I18n.tr("Flagge"),
-                                content = "UK."
-                            )
-                        )
-                    }*/
                 }
             }
         }
-        //add(lessonsSlider(""))
-        //add(aufgabenPool(""))
     }
 }
 

@@ -1,5 +1,8 @@
 package com.p_f
 
+import io.kvision.core.Background
+import io.kvision.core.Col
+import io.kvision.core.Color
 import io.kvision.core.onEvent
 import io.kvision.form.FormPanel
 import io.kvision.form.formPanel
@@ -61,22 +64,26 @@ class LoginWindow : Dialog<Credentials>(closeButton = false, escape = false, ani
             validatorMessage = { tr("Passwords are not the same") }
 
         }
-        cancelButton = Button(tr("Cancel"), "fas fa-times") {
+        cancelButton = Button(tr("Cancel"), "fas fa-times", style = ButtonStyle.OUTLINEDARK) {
+            background = Background(Color.name(Col.MISTYROSE))
             onClick {
                 this@LoginWindow.hideRegisterForm()
             }
         }
-        registerButton = Button(tr("Register"), "fas fa-check", ButtonStyle.PRIMARY) {
+        registerButton = Button(tr("Register"), "fas fa-check", style = ButtonStyle.OUTLINEDARK) {
+            background = Background(Color.name(Col.MISTYROSE))
             onClick {
                 this@LoginWindow.processRegister()
             }
         }
-        loginButton = Button(tr("Login"), "fas fa-check", ButtonStyle.PRIMARY) {
+        loginButton = Button(tr("Login"), "fas fa-check", style = ButtonStyle.OUTLINEDARK) {
+            background = Background(Color.name(Col.MISTYROSE))
             onClick {
                 this@LoginWindow.processCredentials()
             }
         }
-        userButton = Button(tr("Register user"), "fas fa-user") {
+        userButton = Button(tr("Register user"), "fas fa-user", style = ButtonStyle.OUTLINEDARK) {
+            background = Background(Color.name(Col.MISTYROSE))
             onClick {
                 this@LoginWindow.showRegisterForm()
             }

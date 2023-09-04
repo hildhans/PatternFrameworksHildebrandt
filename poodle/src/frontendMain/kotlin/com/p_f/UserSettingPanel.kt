@@ -1,5 +1,8 @@
 package com.p_f
 
+import io.kvision.core.Background
+import io.kvision.core.Col
+import io.kvision.core.Color
 import io.kvision.core.onEvent
 import io.kvision.form.FormPanel
 import io.kvision.form.formPanel
@@ -52,10 +55,12 @@ object UserSettingPanel : StackPanel() {
         formEditPanel.add(Address::phone, Text(label = "${tr("Phone number")}:").apply { maxlength = 255 })
         formEditPanel.add(Address::postalAddress, Text(label = "${tr("Postal address")}:").apply { maxlength = 255 })
         formEditPanel.add(HPanel(spacing = 10) {
-            button(tr("Save"), "fas fa-check", ButtonStyle.PRIMARY).onClick {
+            button(tr("speichern"), "fas fa-check", style = ButtonStyle.OUTLINEDARK).onClick {
+                background = Background(Color.name(Col.MISTYROSE))
                 this@UserSettingPanel.saveEdit()
             }
-            button(tr("Cancel"), "fas fa-times", ButtonStyle.SECONDARY).onClick {
+            button(tr("abbrechen"), "fas fa-times", style = ButtonStyle.OUTLINEDARK).onClick {
+                background = Background(Color.name(Col.MISTYROSE))
                 this@UserSettingPanel.close()
             }
         })
@@ -87,10 +92,12 @@ object UserSettingPanel : StackPanel() {
             (it.getValue()?.length ?: 0) >= 8
         }
         formChangePanel.add(HPanel(spacing = 10) {
-            button(tr("Save"), "fas fa-check", ButtonStyle.PRIMARY).onClick {
-                this@UserSettingPanel.saveChange()
+            button(tr("speichern"), "fas fa-check", style = ButtonStyle.OUTLINEDARK).onClick {
+                background = Background(Color.name(Col.MISTYROSE))
+                this@UserSettingPanel.saveEdit()
             }
-            button(tr("Cancel"), "fas fa-times", ButtonStyle.SECONDARY).onClick {
+            button(tr("abbrechen"), "fas fa-times", style = ButtonStyle.OUTLINEDARK).onClick {
+                background = Background(Color.name(Col.MISTYROSE))
                 this@UserSettingPanel.close()
             }
         })
