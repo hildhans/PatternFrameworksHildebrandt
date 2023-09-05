@@ -7,7 +7,7 @@ import io.kvision.core.UNIT
 import io.kvision.form.text.TextInput
 import io.kvision.utils.px
 
-class AufgabeNeun : DesktopWindow("Aufgabe 9 Lesson 1", "", 1000, 800) {
+class AufgabeNeun : DesktopWindow("Aufgabe 9", "", 1000, 800) {
 
     override var height: CssSize?
         get() = super.height

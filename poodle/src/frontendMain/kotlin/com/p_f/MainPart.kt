@@ -30,7 +30,7 @@ fun Container.sideBar(value: String): Tag {
             MainPart.add(taskBackground(""))
             refresh()
         }
-        button(I18n.tr("Lessons"), style = ButtonStyle.OUTLINEDARK) {
+        button(I18n.tr("Lektionen"), style = ButtonStyle.OUTLINEDARK) {
             width = 250.px
             marginTop = 50.px
             fontSize = 15.px
@@ -47,7 +47,7 @@ fun Container.sideBar(value: String): Tag {
                 refresh()
             }
         }
-        button(I18n.tr("Overview"), style = ButtonStyle.LIGHT) {
+        button(I18n.tr("Übersicht"), style = ButtonStyle.LIGHT) {
             width = 250.px
             marginTop = 20.px
             fontSize = 15.px
@@ -63,7 +63,7 @@ fun Container.sideBar(value: String): Tag {
                 refresh()
             }
         }
-        button(I18n.tr("Configuration"), style = ButtonStyle.LIGHT) {
+        button(I18n.tr("Einstellungen"), style = ButtonStyle.LIGHT) {
             width = 250.px
             marginTop = 20.px
             fontSize = 15.px

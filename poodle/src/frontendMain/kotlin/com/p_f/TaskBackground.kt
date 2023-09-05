@@ -67,7 +67,7 @@ fun Container.taskBackground(value: String): Tag {
                                 refresh()
                             Alert.show(
                                 I18n.tr("Let's get started!"),
-                                I18n.tr("Choose an exercise to start"),
+                                I18n.tr("Wähle eine Übung aus, um anzufangen!"),
                                 animation = false
                             )
                             }

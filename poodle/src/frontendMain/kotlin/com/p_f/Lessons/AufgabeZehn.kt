@@ -25,7 +25,7 @@ import io.kvision.panel.hPanel
 import io.kvision.state.bindEach
 import io.kvision.state.observableListOf
 
-class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800) {
+class AufgabeZehn: DesktopWindow("Aufgabe 10", "", 1000, 800) {
     init {
         this.marginTop = 10.px
         this.minHeight = 400.px
@@ -65,7 +65,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
     fun showVocab() {
         // Gebe das aktuelle Wort in einem Alert aus
         Alert.show(
-            I18n.tr("Translate the following:"),
+            I18n.tr("Übersetze die folgende Vokabel:"),
             I18n.tr(words[counter]),
             animation = false
         )
@@ -232,10 +232,10 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         div(rich = true) {
             marginTop = 60.px
             marginLeft = 370.px
-            button(I18n.tr("Task"), style = ButtonStyle.SECONDARY).onClick {
+            button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.SECONDARY).onClick {
                 Alert.show(
-                    I18n.tr("Task: Lesson 1, Exercise 10"),
-                    I18n.tr("Translate by ordering the letters"),
+                    I18n.tr("Aufgabe: Übung 10"),
+                    I18n.tr("Übersetze durch richtiges Anordnen der Buchstaben!"),
                     animation = false )
             }
         }
@@ -323,7 +323,7 @@ class AufgabeZehn: DesktopWindow("Aufgabe 10 Lesson 1: Translate", "", 1000, 800
         div(rich = true) { //Translation Button
             marginTop = 60.px
             marginLeft = 370.px
-            button(I18n.tr("Translation"), style = ButtonStyle.OUTLINEDARK) {
+            button(I18n.tr("Übersetzung"), style = ButtonStyle.OUTLINEDARK) {
                 background = Background(Color.name(Col.MISTYROSE))
 
                 onClick {

@@ -16,7 +16,7 @@ import io.kvision.utils.px
 
 data class Flashcard(val deutsch: String, val englisch: String)
 
-class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
+class AufgabeFuenf : DesktopWindow("Aufgabe 5", "", 1000, 800) {
 
     val flashcards = mutableListOf(
         Flashcard("er", "he"),
@@ -25,9 +25,9 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         Flashcard("du", "you"),
         Flashcard("wir", "we"),
         Flashcard("ich", "I"),
-        Flashcard("Sie(höflich)", "you"),
-        Flashcard("sie", "they"),
-        Flashcard("ihr", "you")
+        Flashcard("Sie (höflich)", "you"),
+        Flashcard("sie (plural)", "they"),
+        Flashcard("ihr (plural)", "you")
     )
 
     //  Flashcard("du", "you", require("img/dog.jpg")),
@@ -90,7 +90,7 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
         background = Background(Color.name(Col.MISTYROSE))
         vPanel(justify = JustifyContent.SPACEAROUND, alignItems = AlignItems.CENTER, spacing = 50) {
             button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.OUTLINEDARK) {
-                background = Background(Color.name(Col.MISTYROSE))
+                background = Background(Color.name(Col.PEACHPUFF))
                 alignContent = AlignContent.CENTER
                 margin = 2.px
                 width = 200.px
@@ -101,8 +101,8 @@ class AufgabeFuenf : DesktopWindow("Aufgabe 5 Lesson 1", "", 1000, 800) {
                 //background = Background(Color.name(Col.ROSYBROWN))
                 onClick {
                     Alert.show(
-                        I18n.tr("Aufgabenstellung: Lektion 1, Lesson 5"),
-                        "Klicken Sie auf die Flashcards und merken Sie sich die jeweils englische Bezeichnung der Personalpronomen!",
+                        I18n.tr("Aufgabenstellung: Aufgabe 5"),
+                        "Klicke auf die Flashcards und merke dir jeweils die englische Bezeichnung der Personalpronomen!",
                         animation = false
                     )
                 }

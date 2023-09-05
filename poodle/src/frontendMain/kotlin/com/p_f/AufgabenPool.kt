@@ -179,10 +179,10 @@ fun Container.aufgabenPool(value: String): Tag {
         div(rich = true) {
             marginTop = 60.px
             marginLeft = 370.px
-            button(I18n.tr("Task"), style = ButtonStyle.SECONDARY).onClick {
+            button(I18n.tr("Aufgabenstellung"), style = ButtonStyle.SECONDARY).onClick {
                 Alert.show(
-                    I18n.tr("Task: Lesson 1, Exercise 3"),
-                    I18n.tr("Put the correct word pairs together."),
+                    I18n.tr("Aufgabe 3"),
+                    I18n.tr("Finde die richtigen Wortpaare!"),
                     animation = false )
             }
         }

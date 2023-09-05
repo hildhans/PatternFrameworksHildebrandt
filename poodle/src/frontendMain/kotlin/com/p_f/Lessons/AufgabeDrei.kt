@@ -18,7 +18,7 @@ import io.kvision.state.bind
 import io.kvision.utils.px
 
 
-class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
+class AufgabeDrei : DesktopWindow("Aufgabe 3", "", 1000, 800) {
     init {
         this.marginTop = 10.px
         this.minHeight = 400.px
@@ -520,8 +520,8 @@ class AufgabeDrei : DesktopWindow("Aufgabe 3 Lesson 1", "", 1000, 800) {
                 //background = Background(Color.name(Col.ROSYBROWN))
                 onClick {
                     Alert.show(
-                        I18n.tr("Aufgabenstellung: Lektion 1, Lesson 3"),
-                        "Fügen Sie die richtigen Wortpaare zusammen, indem Sie auf das passende Wort und den passenden Button klicken!",
+                        I18n.tr("Aufgabenstellung: Aufgabe 3"),
+                        "Füge die richtigen Wortpaare zusammen durch Klicken auf das passende Wort und den passenden Button!",
                         animation = false
                     )
                 }

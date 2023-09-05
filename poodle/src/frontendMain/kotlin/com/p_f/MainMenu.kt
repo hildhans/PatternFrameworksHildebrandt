@@ -49,7 +49,7 @@ fun Container.LektionShowDiv(value: String, size: Int) {
         //alignContent = AlignContent.CENTER
         //width = size.px
         //height = size.px
-        span(I18n.tr("Lesson 1")){
+        span(I18n.tr("Lektion 1")){
             fontFamily = "Arial"
             fontSize = 25.px
             fontWeight = FontWeight.BOLDER

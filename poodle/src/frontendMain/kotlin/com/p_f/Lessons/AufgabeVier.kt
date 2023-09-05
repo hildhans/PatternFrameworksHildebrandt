@@ -19,7 +19,7 @@ import io.kvision.state.ObservableValue
 import io.kvision.state.bind
 import io.kvision.utils.px
 
-class AufgabeVier : DesktopWindow("Aufgabe 4 Lesson 1", "", 1000, 800) {
+class AufgabeVier : DesktopWindow("Aufgabe 4", "", 1000, 800) {
     override var height: CssSize?
         get() = super.height
         set(value) {
