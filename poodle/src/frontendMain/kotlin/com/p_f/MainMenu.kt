@@ -22,6 +22,7 @@ object MainMenu : HPanel(justify = JustifyContent.SPACEAROUND, alignItems = Alig
         }
         logoPoodle("", 150)
         LektionShowDiv("", 200)
+        FlaggeDiv("", 150)
 
         //BegruessungsDiv("", 150)
         //welcomeScreen("", 150)
@@ -70,6 +71,17 @@ fun Container.BegruessungsDiv(value: String, size: Int) {
             fontStyle = FontStyle.OBLIQUE
             fontWeight = FontWeight.BOLDER
             //fontVariant = FontVariant.SMALLCAPS
+        }
+    }
+}
+
+fun Container.FlaggeDiv(value: String, size: Int) {
+    div{
+        image(io.kvision.require("img/GB.png")) {
+            marginTop = 40.px
+            alignContent = AlignContent.CENTER
+            width = auto
+            height = 100.px
         }
     }
 }
