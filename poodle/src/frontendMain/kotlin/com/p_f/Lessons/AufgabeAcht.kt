@@ -32,21 +32,19 @@ class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
             marginTop = 20.px
             color = Color.hex(0x000000)
         }
-
         add(Aufgabenstellung(""))
         add(sprachewiedergeben(textausgabeSpan))
         add(texteingabe(textausgabeSpan))
     }
+
     fun Container.sprachewiedergeben(textausgabeSpan: Span): Tag {
         return div {
             align = Align.LEFT
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.MISTYROSE))
             width = 1000.px
             height = 150.px
             marginTop = 0.px
             marginLeft = 250.px
-
-
             button("Sprachwiedergabe starten", style = ButtonStyle.LIGHT) {
                 width = 250.px
                 marginTop = 50.px
@@ -58,18 +56,18 @@ class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
 //                    val file = files.files?.get(0)
 //                    if (file != null) {
                     //val url = "C:\\Users\\hans_\\Downloads\\Neuer Ordner\\PatternFrameworksHildebrandt\\poodle\\src\\frontendMain\\resources\\audio\\sound-effect-hd.mp3"
-                    val url = "audio/sound-effect-hd.mp3"
+                    text = "Erneut abspielen"
+                    val url = "audio/Sprachbeispiel.mp3"
                     audioElement.src = url
                     audioElement.play()}
-                text = "Erneut abspielen"}
+            }
         }
     }
-
 
     fun Container.texteingabe(textausgabeSpan: Span): Tag {
         return div {
             align = Align.CENTER
-            background = Background(Color.name(Col.LIGHTGRAY))
+            background = Background(Color.name(Col.PEACHPUFF))
             fontSize = 35.px
             fontFamily = "Arial"
             width = 1000.px
@@ -98,7 +96,7 @@ class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
     fun Container.Aufgabenstellung(value: String): Tag {
         return div(value).apply {
             align = Align.CENTER
-            background = Background(Color.name(Col.LIGHTGRAY))
+            background = Background(Color.name(Col.PEACHPUFF))
             fontSize = 35.px
             fontFamily = "Arial"
             width = 1000.px
