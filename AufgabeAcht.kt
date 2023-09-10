@@ -20,9 +20,6 @@ import kotlinx.browser.window
 
 class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
 
-
-
-
     init {
         minWidth = 500.px
         minHeight = 180.px
@@ -43,7 +40,7 @@ class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
     fun Container.sprachewiedergeben(textausgabeSpan: Span): Tag {
         return div {
             align = Align.LEFT
-            background = Background(Color.name(Col.LIGHTGREEN))
+            background = Background(Color.name(Col.MISTYROSE))
             width = 1000.px
             height = 150.px
             marginTop = 0.px
@@ -60,18 +57,20 @@ class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
                 onClick {
 //                    val file = files.files?.get(0)
 //                    if (file != null) {
-                    val url = "C:\\Users\\hans_\\Downloads\\Neuer Ordner\\PatternFrameworksHildebrandt\\poodle\\src\\frontendMain\\resources\\audio\\sound-effect-hd.mp3"
+                    //val url = "C:\\Users\\hans_\\Downloads\\Neuer Ordner\\PatternFrameworksHildebrandt\\poodle\\src\\frontendMain\\resources\\audio\\sound-effect-hd.mp3"
+                    text = "Erneut abspielen"
+                    val url = "audio/Sprachbeispiel.mp3"
                     audioElement.src = url
                     audioElement.play()}
-                    text = "Erneut abspielen"}
                 }
-            }
         }
+    }
+
 
     fun Container.texteingabe(textausgabeSpan: Span): Tag {
         return div {
             align = Align.CENTER
-            background = Background(Color.name(Col.LIGHTGRAY))
+            background = Background(Color.name(Col.PEACHPUFF))
             fontSize = 35.px
             fontFamily = "Arial"
             width = 1000.px
@@ -97,11 +96,10 @@ class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
         }
     }
 
-
     fun Container.Aufgabenstellung(value: String): Tag {
         return div(value).apply {
             align = Align.CENTER
-            background = Background(Color.name(Col.LIGHTGRAY))
+            background = Background(Color.name(Col.PEACHPUFF))
             fontSize = 35.px
             fontFamily = "Arial"
             width = 1000.px
