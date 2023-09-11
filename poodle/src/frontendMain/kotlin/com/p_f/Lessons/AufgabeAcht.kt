@@ -18,7 +18,7 @@ import kotlinx.browser.document
 import kotlinx.browser.window
 
 
-class AufgabeAcht : DesktopWindow("Aufgabe 8 Lesson 1", "", 1000, 800) {
+class AufgabeAcht : DesktopWindow("Aufgabe 8", "", 1400, 1000) {
 
     init {
         minWidth = 500.px

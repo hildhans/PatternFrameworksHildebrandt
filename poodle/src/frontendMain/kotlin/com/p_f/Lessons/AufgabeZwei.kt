@@ -18,7 +18,7 @@ import io.kvision.utils.px
 
 
 
-class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
+class AufgabeZwei : DesktopWindow("Aufgabe 2", "", 1000, 800) {
 
     init {
         addHPanel_1()
@@ -38,8 +38,8 @@ class AufgabeZwei : DesktopWindow("Aufgabe 2 Lesson 1", "", 1000, 800) {
                 //background = Background(Color.name(Col.ROSYBROWN))
                 onClick {
                     Alert.show(
-                        I18n.tr("Aufgabenstellung: Lektion 2, Lesson 1"),
-                        "Bitte klicken Sie auf die Bilder, um zu sehen, welche Verben auf Englisch übersetzt werden sollen!",
+                        I18n.tr("Aufgabenstellung: Aufgabe 2"),
+                        "Per Klick auf die Bilder siehst du, welches deutsche Verb übersetzt werden soll.",
                         animation = false
                     )
                 }

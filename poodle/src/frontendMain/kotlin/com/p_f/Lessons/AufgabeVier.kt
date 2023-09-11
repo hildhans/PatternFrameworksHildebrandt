@@ -1,6 +1,5 @@
 package com.p_f.Lessons
 
-
 import com.p_f.DesktopWindow
 import io.kvision.core.*
 import io.kvision.form.check.CheckStyle
@@ -19,7 +18,7 @@ import io.kvision.state.ObservableValue
 import io.kvision.state.bind
 import io.kvision.utils.px
 
-class AufgabeVier : DesktopWindow("Aufgabe 4 Lesson 1", "", 1000, 800) {
+class AufgabeVier : DesktopWindow("Aufgabe 4", "", 1000, 800) {
     override var height: CssSize?
         get() = super.height
         set(value) {
@@ -47,7 +46,7 @@ class AufgabeVier : DesktopWindow("Aufgabe 4 Lesson 1", "", 1000, 800) {
 
     companion object {
         fun run(container: Container) {
-            container.add(AufgabeEins())
+            container.add(AufgabeVier())
         }
     }
 }
