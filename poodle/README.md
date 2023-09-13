@@ -23,7 +23,7 @@ All notable changes to this project will be documented. See [ChangeLog](CHANGELO
 INFORMATIONS
 * zum bauen der Anwendung untere Resourcen erstellen.
 * In IntelliJ rechte Seite den Tab Gradle aufklappen und die Sachen in angegebener Reihenfolge bauen.
-* Anwendung dann im Browser starten http://localhost:3000/
+* Anwendung dann im Browser starten https://localhost:3000/
 
 ### Compiling
 * compileKotlinFrontend - Compiles frontend sources.
