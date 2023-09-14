@@ -204,7 +204,8 @@ actual class RegisterUserService : IRegisterUserService {
             }
             dbQuery {
                 UserAddressDbo.insert {
-                    it[lastName] = user.name
+                    it[lastName] = user.name!!
+                    it[userName] = user.username!!
                     it[createdAt] = DateTime()
                     it[userId] = key
                 }

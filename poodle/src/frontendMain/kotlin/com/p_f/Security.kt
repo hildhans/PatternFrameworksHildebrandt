@@ -43,7 +43,7 @@ class LoginWindow : Dialog<Credentials>(closeButton = false, escape = false, ani
         }
         registerPanel = formPanel {
             add(User::name, Text(label = "${tr("Your name")}:"), required = true)
-            add(User::username, Text(label = "Login:"), required = true)
+            add(User::username, Text(label = "${tr("Login:")}:"), required = true)
             add(
                 User::password, Password(label = "${tr("Password")}:"), required = true,
                 validatorMessage = { "Password too short" }) {
